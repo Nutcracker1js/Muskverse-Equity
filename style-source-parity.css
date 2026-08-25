@@ -1,0 +1,486 @@
+.dark-section {
+  background: linear-gradient(to top, #232323, #606060);
+  padding: 64px 0 96px;
+}
+.dark-section .dark-inner {
+  min-height: 0;
+}
+.dark-section .eyebrow {
+  display: none;
+}
+.dark-section .dark-heading {
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.dark-section .dark-heading h2 {
+  font:
+    700 30px/1.15 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: -0.03em;
+}
+.dark-section .dark-heading p {
+  color: #ffffff99;
+  max-width: 560px;
+  margin: 0;
+}
+.dark-section .button-light {
+  margin-top: 0;
+}
+.market-image {
+  display: none;
+}
+.products-section {
+  width: min(1280px, calc(100% - 48px));
+  margin: -1px auto 96px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 24px;
+  position: relative;
+  z-index: 2;
+}
+.products-section > .eyebrow {
+  display: none;
+}
+.product-tabs {
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 24px;
+}
+.product-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: #efefef;
+  color: #5e5e5e;
+  font:
+    500 14px ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+.product-tabs button span {
+  display: inline;
+  color: inherit;
+  font-size: 14px;
+  margin: 0;
+}
+.product-tabs button.active {
+  background: #000;
+  color: #fff;
+}
+.product-tabs button.active span {
+  color: #fff;
+}
+.product-panel {
+  padding: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.product-panel h2 {
+  font:
+    700 24px/1.2 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+.product-panel > div > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+.product-panel ul {
+  margin: 0 0 24px;
+}
+.product-panel li {
+  padding: 4px 0;
+}
+.product-panel img {
+  height: auto;
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+}.security-section {
+  display: block !important;
+  width: 100%;
+  background: #fff;
+  border-radius: 24px;
+  padding: 80px 24px;
+  margin-bottom: 96px;
+  box-sizing: border-box;
+}
+
+.security-heading {
+  display: flex !important;
+  width: 100%;
+  min-width: 0;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 48px;
+  box-sizing: border-box;
+}
+
+.security-heading > div {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.security-heading p {
+  margin: 0;
+  max-width: 620px;
+  color: #5e5e5e;
+  font-size: 15px;
+  line-height: 1.625;
+}
+
+/* Get Started */
+.security-heading .button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* THE CARDS MUST BE A COMPLETELY SEPARATE ROW */
+.security-steps {
+  display: grid !important;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.security-steps article {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 220px;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: #d6d6d6;
+}
+
+.security-steps b {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: #232323;
+  color: #ebebeb;
+}
+
+.security-steps h3 {
+  margin: 0 0 8px;
+  font: 600 18px/1.2 ui-sans-serif, system-ui, sans-serif;
+}
+
+.security-steps p {
+  margin: 0;
+  color: #5e5e5e;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.onboarding-section,
+.steps-section,
+.secondary-stats {
+  display: none;
+}/* =========================================================
+   FAQ SECTION
+   ========================================================= */
+
+.faq-section {
+    width: 100%;
+    background: #ffffff;
+  padding: 64px 24px 96px;
+    box-sizing: border-box;
+}
+
+.faq-inner {
+    width: 100%;
+  max-width: 768px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.faq-heading {
+    text-align: center;
+  margin: 0 0 40px;
+}
+
+.faq-heading h2 {
+    margin: 0;
+
+    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(24px, 3vw, 30px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.06em;
+
+    color: #111111;
+}
+
+
+/* =========================================================
+   FAQ LIST
+   ========================================================= */
+
+.faq-list {
+    width: 100%;
+}
+
+.faq-list details {
+    width: 100%;
+  margin: 0 0 12px;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+.faq-list details:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   QUESTION
+   ========================================================= */
+
+.faq-list summary {
+    width: 100%;
+    min-height: 56px;
+
+    padding: 16px 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    cursor: pointer;
+    list-style: none;
+
+    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    color: #111111;
+}
+
+.faq-list summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-list summary::marker {
+    display: none;
+}
+
+
+/* =========================================================
+   PLUS / MINUS
+   ========================================================= */
+
+.faq-toggle {
+    position: relative;
+
+    width: 16px;
+    height: 16px;
+
+    flex: 0 0 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    line-height: 1;
+
+    color: #000000;
+}
+
+.faq-list details[open] .faq-toggle {
+    transform: none;
+}
+
+.faq-toggle svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s ease;
+}
+
+  .faq-list details[open] .faq-toggle svg {
+    transform: rotate(180deg);
+  }
+
+
+/* =========================================================
+   ANSWER
+   ========================================================= */
+
+.faq-answer {
+  padding: 0 20px 16px;
+}
+
+.faq-answer p {
+    max-width: none;
+
+    margin: 0;
+
+    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.625;
+
+    color: #5e5e5e;
+}
+
+
+/* =========================================================
+   VIEW ALL FAQS
+   ========================================================= */
+
+.faq-all-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: fit-content;
+    margin: 32px auto 0;
+
+    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #0000ee;
+
+    text-decoration: none;
+
+    transition: gap 0.25s ease;
+}
+
+.faq-all-link:hover {
+    gap: 13px;
+}
+
+.faq-all-link span {
+    font-size: 17px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .faq-section {
+        padding: 85px 20px 90px;
+    }
+
+    .faq-heading {
+        margin-bottom: 42px;
+    }
+
+    .faq-heading h2 {
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    .faq-list summary {
+        min-height: 68px;
+        padding: 21px 0;
+
+        font-size: 14px;
+    }
+
+    .faq-answer {
+        padding: 0 35px 22px 0;
+    }
+
+    .faq-answer p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+}
+.site-footer {
+  background: #282828;
+}
+@media (max-width: 850px) {
+  .products-section {
+    width: calc(100% - 32px);
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .product-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  .product-tabs button {
+    flex: 0 0 auto;
+  }
+  .product-panel {
+    grid-template-columns: 1fr;
+  }
+  .security-section {
+    margin: 0 16px 64px;
+    padding: 64px 16px;
+  }
+  .security-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+  .security-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .allocation-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .allocation-section {
+    padding: 64px 16px;
+  }
+  .faq-section {
+    padding: 64px 16px;
+  }
+  .space-editorial {
+    padding: 64px 20px;
+  }
+ 
+}

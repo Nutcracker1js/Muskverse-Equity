@@ -1,0 +1,113 @@
+.security-section {
+  padding: 96px 24px;
+  background: #fff;
+  border-radius: 24px;
+  margin: 0 auto 96px;
+}
+.security-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 48px;
+}
+.security-heading > div {
+  max-width: 680px;
+}
+
+}
+.security-heading > div > p:last-child {
+  max-width: 590px;
+  margin: 0;
+  color: #5e5e5e;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.security-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  border: 0;
+}
+.security-steps article,
+.security-steps article + article {
+  min-height: 260px;
+  padding: 24px;
+  background: #d6d6d6;
+  border: 0;
+  border-radius: 16px;
+}
+.security-steps b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 0 16px;
+  border-radius: 50%;
+  background: #232323;
+  color: #ebebeb;
+  font:
+    600 14px/1 ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+.security-steps h3 {
+  margin: 0 0 12px;
+  color: #111827;
+  font:
+    600 21px/1.2 ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+.security-steps p {
+  max-width: 320px;
+  margin: 0;
+  color: #5e5e5e;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.onboarding-section {
+  display: none !important;
+}
+html[data-theme="dark"] .security-section {
+  background: #0a0a0a;
+}
+html[data-theme="dark"] .security-heading h2 {
+  color: #fff;
+}
+html[data-theme="dark"] .security-heading > div > p:last-child {
+  color: #a0a0a0;
+}
+html[data-theme="dark"] .security-steps article {
+  background: #1c1c1c;
+}
+html[data-theme="dark"] .security-steps h3 {
+  color: #fff;
+}
+html[data-theme="dark"] .security-steps p {
+  color: #a0a0a0;
+}
+html[data-theme="dark"] .security-steps b {
+  background: #fff;
+  color: #050505;
+}
+@media (max-width: 800px) {
+  .security-section {
+    padding: 72px 20px;
+    margin-bottom: 64px;
+  }
+  .security-heading {
+    display: block;
+    margin-bottom: 40px;
+  }
+  .security-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .security-steps article,
+  .security-steps article + article {
+    min-height: 220px;
+    padding: 24px;
+  }
+}

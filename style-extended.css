@@ -1,0 +1,17 @@
+.support-section,
+.portfolio-section,
+.security-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-block: 78px;
+}
+.support-card {
+  background: #050505;
+  color: #fff;
+  border-radius: 24px;
+  padding: 62px 48px;
+}
+.support-card h2,
+.portfolio-section h2,
+.security-copy h2,

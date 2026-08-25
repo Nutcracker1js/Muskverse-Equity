@@ -1,0 +1,51 @@
+.hero-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 0;
+  padding-left: 0;
+}
+.hero-avatars {
+  display: flex;
+  align-items: center;
+}
+.hero-avatars img {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: -10px;
+}
+.hero-avatars img:first-child {
+  margin-left: 0;
+}
+.hero-stat strong {
+  font-size: 14px;
+  line-height: 1;
+}
+.hero-stat span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1;
+  color: #ffffffcc;
+}
+.hero-branding {
+  border-radius: 999px;
+}
+.hero-brand-name,
+.hero-brand-partner {
+  border-radius: 0;
+}
+@media (max-width: 700px) {
+  .hero-stat {
+    left: 20px;
+    right: auto;
+    bottom: 54px;
+  }
+  .hero-avatars img {
+    width: 32px;
+    height: 32px;
+  }
+}

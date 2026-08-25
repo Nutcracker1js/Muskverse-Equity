@@ -1,0 +1,293 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>How Much Should You Actually Save for Retirement? - Prelist Equity</title>
+    <link rel="icon" href="https://prelistequity.com/storage/app/public/photos/RSk0PxFcPWtPGAUCxqXAeRdHyJE5OBPYazK3y27M.png" type="image/png" />
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: {
+                        DEFAULT: '#000000',
+                        '50':  '#ffffff', '100': '#f3f3f3', '200': '#efefef', '300': '#e2e2e2',
+                        '400': '#afafaf', '500': '#5e5e5e', '600': '#4b4b4b', '700': '#282828',
+                        '800': '#1a1a1a', '900': '#000000',
+                    },
+                    secondary: {
+                        DEFAULT: '#0000ee',
+                        '50':  '#e6e6ff', '100': '#cccdff', '200': '#9999ff', '300': '#6666ff',
+                        '400': '#3333f5', '500': '#0000ee', '600': '#0000c4', '700': '#00009b',
+                        '800': '#000072', '900': '#000048',
+                    },
+                    ink: 'rgb(var(--ink-rgb) / <alpha-value>)',
+                    body: '#5e5e5e',
+                    mute: '#afafaf',
+                    'hairline-mid': '#4b4b4b',
+                    canvas: '#ffffff',
+                    'canvas-soft': '#efefef',
+                    'canvas-softer': '#f3f3f3',
+                    'surface-pressed': '#e2e2e2',
+                    link: '#0000ee',
+                    'on-dark': '#ffffff',
+                    'on-primary': '#ffffff',
+                    'black-elevated': '#282828',
+                    dark: {
+                        DEFAULT: '#0a0a0a', '50': '#141414', '100': '#1c1c1c', '200': '#282828', '300': '#383838',
+                    },
+                    light: {
+                        DEFAULT: '#F8FAFC', '50': '#FFFFFF', '100': '#F0F0F2', '200': '#E6E9F2', '300': '#D5D8E3',
+                    },
+                },
+            }
+        }
+    }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://jcsoci.github.io/FontAwesome6Pro/css/all.min.css">
+
+    <style>
+        :root { --ink-rgb: 0, 0, 0; }
+        .dark { --ink-rgb: 255, 255, 255; }
+        [x-cloak] { display: none !important; }
+        html { scroll-behavior: smooth; }
+    </style>
+
+        </head>
+<body class="dark:bg-dark bg-canvas dark:text-white text-ink transition-colors duration-200">
+
+    
+    
+    <header class="sticky top-3 sm:top-4 z-50 px-3 sm:px-6" x-data="{ mobileOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-[72px] flex items-center justify-between gap-4 rounded-full dark:bg-dark/90 bg-canvas/95 backdrop-blur-sm shadow-lg dark:shadow-black/40 border dark:border-dark-100 border-surface-pressed">
+            <a href="https://prelistequity.com/index" class="flex items-center flex-shrink-0">
+                <img src="https://prelistequity.com/storage/app/public/photos/obgdPE51GdrU2O21QRG6gaVVkoKnbp1hLJtBcKKr.png" alt="Prelist Equity" class="h-9 dark:hidden">
+                <img src="https://prelistequity.com/storage/app/public/photos/qS1e34Gm7fKHfTyQE5CEMR6wZeNgPePcGVyer4ul.png" alt="Prelist Equity" class="h-9 hidden dark:block">
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+                <div class="relative" x-data="{ open: false, closeTimer: null }" @mouseenter="clearTimeout(closeTimer)" @mouseleave="closeTimer = setTimeout(() => open = false, 200)">
+                    <button @click="open = !open" class="flex items-center gap-1.5 dark:text-gray-300 text-body hover:text-ink dark:hover:text-white transition-colors">
+                        Investing
+                        <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
+                    </button>
+                    <div x-show="open" x-cloak x-transition class="absolute left-0 pt-2 mt-0 w-56" @click.away="open = false">
+                        <div class="rounded-xl dark:bg-dark-50 bg-canvas border dark:border-dark-100 border-surface-pressed shadow-lg overflow-hidden py-2">
+                            <a href="/automated-investing" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">Automated Investing</a>
+                            <a href="/crypto-investing" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">Crypto Investing</a>
+                            <a href="/bond-investing" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">Bond Investing</a>
+                            <a href="/etf-investing" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">ETF Investing</a>
+                            <a href="/cash" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">Cash</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/cash" class="dark:text-gray-300 text-body hover:text-ink dark:hover:text-white transition-colors">Cash</a>
+
+                <div class="relative" x-data="{ open: false, closeTimer: null }" @mouseenter="clearTimeout(closeTimer)" @mouseleave="closeTimer = setTimeout(() => open = false, 200)">
+                    <button @click="open = !open" class="flex items-center gap-1.5 dark:text-gray-300 text-body hover:text-ink dark:hover:text-white transition-colors">
+                        Learn
+                        <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
+                    </button>
+                    <div x-show="open" x-cloak x-transition class="absolute left-0 pt-2 mt-0 w-56" @click.away="open = false">
+                        <div class="rounded-xl dark:bg-dark-50 bg-canvas border dark:border-dark-100 border-surface-pressed shadow-lg overflow-hidden py-2">
+                            <a href="/how-to-invest" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">How to Invest</a>
+                            <a href="/about-us" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">About us</a>
+                            <a href="/articles" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">Articles</a>
+                            <a href="/stocks" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">Stocks</a>
+                            <a href="/faq" class="block px-4 py-2.5 dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft hover:text-ink dark:hover:text-white transition-colors">F.A.Q</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/stocks" class="dark:text-gray-300 text-body hover:text-ink dark:hover:text-white transition-colors">Stocks</a>
+                <a href="/faq" class="dark:text-gray-300 text-body hover:text-ink dark:hover:text-white transition-colors">F.A.Q</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="themeToggle" onclick="toggleHomeTheme()" class="p-2 rounded-lg dark:text-gray-300 text-body hover:text-ink dark:hover:text-white dark:hover:bg-dark-100 hover:bg-canvas-soft transition-colors" title="Toggle theme">
+                    <i data-lucide="sun" class="h-4 w-4"></i>
+                    <i data-lucide="moon" class="h-4 w-4"></i>
+                </button>
+
+                <a href="https://prelistequity.com/login" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full bg-primary dark:bg-white text-on-primary dark:text-dark text-sm font-medium hover:opacity-90 transition-opacity">
+                    Sign In
+                </a>
+
+                <button @click="mobileOpen = !mobileOpen" class="lg:hidden p-2 dark:text-white text-ink" aria-label="Toggle menu">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+
+        
+        <div x-show="mobileOpen" x-cloak x-transition class="lg:hidden max-w-7xl mx-auto mt-2 rounded-2xl border dark:border-dark-100 border-surface-pressed dark:bg-dark/95 bg-canvas/95 backdrop-blur-sm shadow-lg overflow-hidden">
+            <nav class="px-4 py-4 space-y-1 text-sm font-medium">
+                <p class="px-2 pt-2 pb-1 text-xs uppercase tracking-wide dark:text-gray-500 text-mute">Investing</p>
+                <a href="/automated-investing" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">Automated Investing</a>
+                <a href="/crypto-investing" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">Crypto Investing</a>
+                <a href="/bond-investing" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">Bond Investing</a>
+                <a href="/etf-investing" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">ETF Investing</a>
+                <a href="/cash" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">Cash</a>
+                <p class="px-2 pt-3 pb-1 text-xs uppercase tracking-wide dark:text-gray-500 text-mute">Learn</p>
+                <a href="/how-to-invest" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">How to Invest</a>
+                <a href="/about-us" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">About us</a>
+                <a href="/articles" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">Articles</a>
+                <a href="/stocks" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">Stocks</a>
+                <a href="/faq" class="block px-2 py-2 rounded-lg dark:text-gray-300 text-body hover:dark:bg-dark-100 hover:bg-canvas-soft">F.A.Q</a>
+                <a href="https://prelistequity.com/login" class="block mt-3 text-center px-5 py-2.5 rounded-full bg-primary dark:bg-white text-on-primary dark:text-dark font-medium">Sign In</a>
+            </nav>
+        </div>
+    </header>
+
+    
+    <main>
+        
+<section class="relative overflow-hidden dark:bg-dark bg-primary">
+            <img src="https://prelistequity.com/storage/app/public/articles/deBzIDoiRSE22rSK0JPuQvBSueR3jWU3CKOmjs7t.jpg" alt="" class="absolute inset-0 w-full h-full opacity-40" style="object-fit:cover;object-position:center center;">
+        <div class="relative max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
+                <span class="inline-flex px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-xs font-semibold uppercase tracking-wide text-white mb-4">Retirement</span>
+                <h1 class="text-2xl sm:text-4xl font-bold text-white mb-4">How Much Should You Actually Save for Retirement?</h1>
+                <p class="text-sm text-white/60">June 19, 2026</p>
+            </div>
+</section>
+
+<article class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <div class="dark:text-gray-300 text-body leading-relaxed space-y-4">
+                                <p>There&#039;s no universal number that tells you exactly how much you need for retirement — it depends on your timeline, your expected expenses, and the lifestyle you&#039;re planning for. That said, a few starting points can help you build your own target.</p>
+                                            <p>A common rule of thumb is to aim to replace somewhere between 70% and 90% of your pre-retirement income each year once you stop working, accounting for the fact that some costs (commuting, saving itself) tend to drop while others (healthcare, leisure) can rise.</p>
+                                            <p>The earlier you start, the more compounding does the heavy lifting for you. Even modest, consistent contributions made over decades can outperform larger contributions made later, simply because they&#039;ve had more time to grow.</p>
+                                            <p>Rather than fixating on one number, it helps to break retirement saving into milestones tied to your age and income — and to revisit the plan periodically as your circumstances change. A clear, realistic target beats a vague, intimidating one every time.</p>
+                        </div>
+
+    <div class="mt-10">
+        <a href="https://prelistequity.com/articles" class="text-link text-sm font-medium hover:underline">&larr; Back to all articles</a>
+    </div>
+</article>
+
+<section class="dark:bg-dark-50 bg-canvas-softer py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <h2 class="text-xl sm:text-2xl font-bold dark:text-white text-ink mb-8">More Articles</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <a href="https://prelistequity.com/articles/is-a-roth-conversion-right-for-you" class="dark:bg-dark-100 bg-canvas rounded-2xl p-6 border dark:border-dark-200 border-surface-pressed hover:opacity-90 transition-opacity">
+                                <span class="text-xs font-semibold uppercase tracking-wide text-link mb-2 block">Retirement</span>
+                                <h3 class="font-semibold dark:text-white text-ink leading-snug">Is a Roth Conversion Right for You?</h3>
+            </a>
+                        <a href="https://prelistequity.com/articles/the-benefits-and-drawbacks-of-iras" class="dark:bg-dark-100 bg-canvas rounded-2xl p-6 border dark:border-dark-200 border-surface-pressed hover:opacity-90 transition-opacity">
+                                <span class="text-xs font-semibold uppercase tracking-wide text-link mb-2 block">Retirement</span>
+                                <h3 class="font-semibold dark:text-white text-ink leading-snug">The Benefits and Drawbacks of IRAs</h3>
+            </a>
+                    </div>
+    </div>
+</section>
+
+    </main>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <div class="relative overflow-hidden rounded-3xl px-8 sm:px-16 py-16 text-center">
+        <div class="absolute inset-0" style="background-image: linear-gradient(to top, #000000, #444444); opacity: 1;"></div>
+        <div class="relative">
+                        <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">Ready to Put Your Money to Work?</h2>
+                                    <p class="text-sm sm:text-base text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">Prelist Equity was founded with a simple goal: to provide dependable and professional investing services that clients can rely on. Over the years, we have built strong relationships with our investors.</p>
+                        <div class="flex flex-wrap items-center justify-center gap-3">
+                                <a href="/register" class="inline-flex px-8 py-3.5 rounded-full bg-white text-dark text-sm font-medium hover:opacity-90 transition-opacity">Get Started</a>
+                                                <a href="/about-us" class="inline-flex px-8 py-3.5 rounded-full border border-white text-white text-sm font-medium hover:bg-white/10 transition-colors">Learn More</a>
+                            </div>
+        </div>
+    </div>
+</section>
+
+    
+    <footer class="dark:bg-dark-50 bg-black-elevated text-on-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+            <img src="https://prelistequity.com/storage/app/public/photos/qS1e34Gm7fKHfTyQE5CEMR6wZeNgPePcGVyer4ul.png" alt="Prelist Equity" class="h-9 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="md:col-span-1">
+                    <h4 class="font-semibold mb-3">Join the Community</h4>
+                    <p class="text-sm text-gray-400">We aim to give everyone access to the financial system, regardless of their background or bank account balance.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Need Help?</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="/about-us" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="/faq" class="hover:text-white transition-colors">F.A.Q</a></li>
+                        <li><a href="/articles" class="hover:text-white transition-colors">Our Blog</a></li>
+                        <li><a href="https://prelistequity.com/terms" class="hover:text-white transition-colors">Terms of Use</a></li>
+                        <li><a href="https://prelistequity.com/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Learn More</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="https://prelistequity.com/login" class="hover:text-white transition-colors">Login</a></li>
+                        <li><a href="/how-to-invest" class="hover:text-white transition-colors">How to Invest</a></li>
+                        <li><a href="/automated-investing" class="hover:text-white transition-colors">Automated Investing</a></li>
+                        <li><a href="/stocks" class="hover:text-white transition-colors">Stocks</a></li>
+                        <li><a href="/etf-investing" class="hover:text-white transition-colors">ETF Investing</a></li>
+                        <li><a href="/crypto-investing" class="hover:text-white transition-colors">Crypto Investing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Get in Touch</h4>
+                                        <p class="text-sm text-gray-400 mb-2">https://prelistequity.com/</p>
+                                                            <p class="text-sm"><a href="mailto:support@prelistequity.com" class="text-gray-400 hover:text-white transition-colors">support@prelistequity.com</a></p>
+                                    </div>
+            </div>
+            <p class="mt-12 pt-8 border-t border-white/10 text-xs text-gray-500 leading-relaxed">
+                &copy; 2026 Prelist Equity. All rights reserved. All investments involve risk, including the possible loss of capital. Past performance is not indicative of future results.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const saved = localStorage.getItem('homeDarkMode');
+            const adminDefault = "light" === 'dark';
+
+            if (saved === 'true' || (saved === null && adminDefault)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            updateHomeThemeIcon();
+            if (window.lucide) lucide.createIcons();
+        });
+
+        function toggleHomeTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('homeDarkMode', 'false');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('homeDarkMode', 'true');
+            }
+            updateHomeThemeIcon();
+        }
+
+        function updateHomeThemeIcon() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const sunIcon = document.querySelector('#themeToggle [data-lucide="sun"]');
+            const moonIcon = document.querySelector('#themeToggle [data-lucide="moon"]');
+            if (sunIcon && moonIcon) {
+                sunIcon.style.display = isDark ? 'block' : 'none';
+                moonIcon.style.display = isDark ? 'none' : 'block';
+            }
+        }
+    </script>
+<script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=jjXHOkoq8rRi"></script>
+        </body>
+</html>
+

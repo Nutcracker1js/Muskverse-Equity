@@ -1,0 +1,70 @@
+.theme-toggle {
+  width: 48px;
+  height: 40px;
+  flex: 0 0 48px;
+  margin-left: 12px;
+  border-radius: 10px;
+  transform: none !important;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease !important;
+  box-sizing: border-box;
+  border: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  display: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: none !important;
+}
+.theme-toggle .theme-moon {
+  display: block;
+}
+html[data-theme="dark"] .theme-toggle .theme-moon {
+  display: none;
+}
+html[data-theme="dark"] .theme-toggle .theme-sun {
+  display: block;
+}
+.theme-toggle:hover {
+  background: transparent !important;
+  color: inherit;
+  transform: none !important;
+}
+.nav-chevron {
+  width: 7px;
+  height: 7px;
+  margin: 0 0 3px;
+  transform: rotate(45deg) !important;
+  transition: none !important;
+}
+.nav-dropdown:hover .nav-chevron,
+.nav-dropdown:focus-within .nav-chevron {
+  transform: rotate(45deg) !important;
+}
+.nav-dropdown > button:hover,
+.nav-dropdown > button:focus {
+  color: inherit;
+}
+.nav-dropdown > button {
+  gap: 8px;
+}
+@media (max-width: 850px) {
+  .theme-toggle {
+    width: 44px;
+    height: 40px;
+    flex-basis: 44px;
+    margin-left: auto;
+  }
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+}

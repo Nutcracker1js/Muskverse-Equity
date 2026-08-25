@@ -1,0 +1,9 @@
+/* Keep filled controls readable as themes invert. */
+.nav-login{color:#fff}
+.button-light,.button-white{color:#050505}
+
+html[data-theme="dark"] .button:not(.button-ghost):not(.button-outline-light){background:#fff;border-color:#fff;color:#050505}
+html[data-theme="dark"] .button:not(.button-ghost):not(.button-outline-light):hover{background:#f0f0f0;border-color:#f0f0f0;color:#050505}
+html[data-theme="dark"] .nav-login{background:#fff;border-color:#fff;color:#050505}
+html[data-theme="dark"] .button-light,html[data-theme="dark"] .button-white,html[data-theme="dark"] .button-yellow{background:#fff;border-color:#fff;color:#050505}
+html[data-theme="dark"] .button-ghost,html[data-theme="dark"] .button-outline-light{color:#fff}

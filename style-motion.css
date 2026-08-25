@@ -1,0 +1,40 @@
+@media (prefers-reduced-motion: no-preference) {
+  main > section:not(.hero),
+  .site-footer {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.72s ease,
+      transform 0.72s ease;
+  }
+  main > section.is-visible,
+  .site-footer.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .image-frame img,
+  .support-image img,
+  .portfolio-image img,
+  .feature-image img,
+  .security-image img,
+  .frontier-visual img,
+  .space-editorial-image img,
+ 
+  .product-panel img {
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  main > section.is-visible img {
+    transform: scale(1.01);
+  }
+  .button,
+  .text-link {
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .button:hover,
+  .text-link:hover {
+    transform: translateY(-2px);
+  }
+}

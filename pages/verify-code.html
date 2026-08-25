@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Verify your code to continue with Muskverse Equity."
+    />
+    <title>Muskverse Equity | Verify Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style-overrides.css" />
+    <link rel="stylesheet" href="../style-theme.css" />
+    <link rel="stylesheet" href="../clone.css" />
+    <style>
+      :root {
+        --brand: #5156be;
+        --bg: #f5f5fc;
+        --panel: #ffffff;
+        --line: #e3e3e3;
+        --heading: #111827;
+        --text: #2c3131;
+        --muted: #636d79;
+        --muted-2: #526179;
+        --shadow: rgba(40, 45, 90, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      a { text-decoration: none; }
+
+      .itrust.auth-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .auth-header .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: #111827;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .auth-header .brand span {
+        color: #111827;
+      }
+
+      .auth-cardhead {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding-bottom: 20px;
+      }
+
+      .auth-cardhead .go-back {
+        position: absolute;
+        left: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        width: 20px;
+        height: 20px;
+      }
+
+      .auth-cardhead .go-back svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+      }
+
+      .auth-cardhead h1 {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #111;
+      }
+
+      .auth-instruction {
+        text-align: center;
+        color: var(--muted-2);
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 30px 0 24px;
+      }
+
+      .auth-foot {
+        text-align: center;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .auth-foot a {
+        color: var(--brand);
+        font-weight: 600;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 520px) {
+        .auth-cardhead {
+          justify-content: flex-start;
+          gap: 12px;
+        }
+
+        .auth-cardhead .go-back {
+          position: static;
+        }
+
+        .auth-cardhead h1 {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="itrust auth-page">
+      <header class="auth-header">
+        <a href="../index.html#top" aria-label="Muskverse Equity home" class="brand">
+          <span>Muskverse</span><span>&nbsp;Equity</span>
+        </a>
+        <a href="../index.html#contact" class="btn-signup">Sign Up</a>
+      </header>
+
+      <main class="auth-main">
+        <div class="auth-card">
+          <div class="auth-cardhead">
+            <a href="../index.html#contact" class="go-back" aria-label="Go back">
+              <svg viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 18L2 10L10 2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <h1>Verify Code</h1>
+          </div>
+
+          <p class="auth-sub">Enter the 6-digit code to continue</p>
+          <hr class="auth-divider" />
+
+          <p class="auth-instruction">We sent a verification code to your email. Please enter it below.</p>
+
+          <form method="post" action="#">
+            <div class="otp-row" aria-label="Verification code entry">
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 1" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6" />
+            </div>
+
+            <button type="submit" class="btn-verify">Verify Code</button>
+          </form>
+
+          <p class="auth-foot"><a href="#">Resend code</a></p>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const otpInputs = document.querySelectorAll('.otp-row input');
+      otpInputs.forEach((input, index) => {
+        input.addEventListener('input', (event) => {
+          const value = event.target.value.replace(/\D/g, '').slice(0, 1);
+          event.target.value = value;
+
+          if (value && index < otpInputs.length - 1) {
+            otpInputs[index + 1].focus();
+          }
+        });
+
+        input.addEventListener('keydown', (event) => {
+          if (event.key === 'Backspace' && !input.value && index > 0) {
+            otpInputs[index - 1].focus();
+          }
+          if (event.key === 'ArrowLeft' && index > 0) {
+            otpInputs[index - 1].focus();
+          }
+          if (event.key === 'ArrowRight' && index < otpInputs.length - 1) {
+            otpInputs[index + 1].focus();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+/* Keep the source's post-hero editorial rhythm visible. */
+main > .feature-section {
+  display: grid;
+  order: 5;
+}
+.feature-section {
+  width: min(1280px, calc(100% - 48px));
+  padding: 96px 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.feature-section:nth-of-type(odd) {
+  direction: rtl;
+}
+.feature-section:nth-of-type(odd) > * {
+  direction: ltr;
+}
+.feature-image {
+  height: auto;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+}
+.feature-copy h2 {
+  font:
+    700 30px/1.15 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: -0.03em;
+}
+.feature-copy > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.products-section {
+  order: 4;
+  margin-bottom: 0;
+}
+.security-section {
+  order: 6;
+}
+.frontier-band {
+  order: 7;
+}
+.secondary-stats {
+  order: 8;
+}
+.space-editorial {
+  order: 9;
+}
+.allocation-section {
+  order: 10;
+}
+.faq-section {
+  order: 11;
+}
+.testimonial {
+  order: 12;
+}
+.final-cta {
+  order: 13;
+  display: block;
+}
+.products-section .product-panel {
+  display: grid;
+}
+.products-section .product-panel:not(.active) {
+  display: none;
+}
+@media (max-width: 850px) {
+  .feature-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 64px 20px;
+  }
+  .feature-section:nth-of-type(odd) {
+    direction: ltr;
+  }
+  .feature-image {
+    order: 0;
+  }
+  .feature-copy {
+    order: 1;
+  }
+}

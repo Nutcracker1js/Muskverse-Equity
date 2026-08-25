@@ -1,0 +1,41 @@
+.investment-showcase {
+  background: linear-gradient(to top, #232323, #606060);
+  position: relative;
+  padding: 48px 0 96px;
+}
+.investment-showcase .dark-section {
+  background: transparent;
+  padding: 0;
+}
+.investment-showcase .dark-inner {
+  width: min(1280px, calc(100% - 48px));
+  min-height: 0;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.investment-showcase .dark-heading {
+  margin-bottom: 32px;
+}
+.investment-showcase .products-section {
+  margin: 0 auto;
+  background: #fff;
+}
+.investment-showcase .product-panel {
+  display: none;
+}
+.investment-showcase .product-panel.active {
+  display: grid;
+}
+@media (max-width: 850px) {
+  .investment-showcase {
+    padding: 48px 0 64px;
+  }
+  .investment-showcase .dark-inner {
+    width: 100%;
+    padding: 0 16px;
+  }
+  .investment-showcase .products-section {
+    width: calc(100% - 32px);
+    margin: 0 16px;
+  }
+}
