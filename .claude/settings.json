@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//tmp/**)",
+      "Skill(browser-automation)",
+      "Skill(browser-automation:*)",
+      "Bash(find /Users/mac/.claude/skills/browser-automation -maxdepth 1)",
+      "Read(//Users/mac/.codegpt/skills/browser-automation/**)",
+      "Bash(ls -la /Users/mac/.claude/skills/browser-automation 2>&1)",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs \"file:///Users/mac/Desktop/Muskverse-Equity/login.html\" --script /private/tmp/claude-501/-Users-mac-Desktop-Muskverse-Equity/58b6380c-2dcf-44bc-aec9-deac83a79fda/scratchpad/login_qa.mjs)",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs \"file:///Users/mac/Desktop/Muskverse-Equity/index.html\")",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs \"file:///Users/mac/Desktop/Muskverse-Equity/index.html\" --script /private/tmp/claude-501/-Users-mac-Desktop-Muskverse-Equity/58b6380c-2dcf-44bc-aec9-deac83a79fda/scratchpad/nav_check.mjs)",
+      "Bash(git add *)",
+      "Bash(sips -g pixelWidth -g pixelHeight assets/images/signup.jpg)",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs file:///Users/mac/Desktop/Muskverse-Equity/register.html?v=__CMDSUB_OUTPUT__ --eval ' *)"
+    ]
+  }
+}
