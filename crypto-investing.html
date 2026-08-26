@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="muskverse Equity helps investors access thoughtful, long-term opportunities."
+    />
+    <title>muskverse Equity | Invest in What's Next</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/main.css" />
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <div class="nav-wrap">
+        <a
+          class="brand"
+          href="index.html#top"
+          aria-label="Muskverse Equity home"
+          ><span>Muskverse Equity</span>
+        </a>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <div class="nav-dropdown">
+            <button type="button">
+              <span class="mobile-nav-label">Investing</span><span class="desktop-nav-label">Investing</span><span class="nav-chevron"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6"></path></svg></span>
+            </button>
+            <div class="nav-menu">
+              <a href="automated-investing.html">Automated Investing</a
+              ><a href="crypto-investing.html">Crypto Investing</a
+              ><a href="bond-investing.html">Bond Investing</a
+              ><a href="etf-investing.html">ETF Investing</a
+              ><a href="cash.html">Cash</a>
+            </div>
+          </div>
+          <a href="cash.html">Cash</a>
+          <div class="nav-dropdown">
+            <button type="button">
+              <span class="mobile-nav-label">Learn</span><span class="desktop-nav-label">Learn</span><span class="nav-chevron"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6"></path></svg></span>
+            </button>
+             <div class="nav-menu">
+              <a href="how-to-invest.html">How to Invest</a
+              ><a href="about-us.html">About us</a
+              ><a href="articles.html">Articles</a>
+               <a  href="stocks.html">Stocks</a>
+              <a href="faq.html">F.A.Q</a>
+            </div>
+          </div>
+          <a class="desktop-only-nav-link" href="stocks.html">Stocks</a>
+          <a class="desktop-only-nav-link" href="faq.html">F.A.Q</a>
+          <a class="mobile-nav-login" href="login.html">Sign In</a>
+        </nav>
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+        >
+          <svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path></svg
+          ><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24">
+            <path
+              d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+            ></path>
+          </svg>
+        </button>
+        <a class="button button-small nav-login" href="login.html"
+          >Sign In</a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+    <main>
+<section class="crypto-hero">
+  <div class="crypto-hero-content">
+
+    <div class="crypto-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727" />
+      </svg>
+    </div>
+
+    <h1>Crypto Investing</h1>
+
+    <p>
+      Buy, hold, and swap digital assets right next to your stocks and
+      bonds — one account, one balance, no separate exchange to juggle
+      or remember a password for.
+    </p>
+
+  </div>
+</section>
+<style>.crypto-hero {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 72px 24px 64px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      82% 100% at 20% 72%,
+      rgba(61, 61, 61, 0.92) 0%,
+      rgba(22, 22, 22, 0.48) 48%,
+      transparent 82%
+    ),
+    linear-gradient(
+      180deg,
+      #030303 0%,
+      #010101 48%,
+      #030034 100%
+    );
+}
+
+.crypto-hero-content {
+  width: 100%;
+  max-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+/* BITCOIN BOX */
+.crypto-icon {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  /* subtle blur like backdrop-blur-sm */
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+
+  /* border */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 16px;
+
+  transform: none;
+}
+
+.crypto-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: rotate(6deg);
+}
+
+/* HEADING */
+
+.crypto-hero h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(30px, 3.2vw, 38px);
+  font-weight: 700;
+
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+/* DESCRIPTION */
+
+.crypto-hero p {
+  width: 100%;
+  max-width: 680px;
+
+  margin: 16px auto 0;
+
+  color: rgba(255, 255, 255, 0.76);
+
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .crypto-hero {
+    min-height: 520px;
+    padding: 96px 22px 72px;
+  }
+
+  .crypto-icon {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 32px;
+    border-radius: 20px;
+    font-size: 30px;
+  }
+
+  .crypto-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .crypto-hero p {
+    margin-top: 20px;
+  }
+}
+</style>
+
+<section class="automated-trading crypto-trading">
+  <div class="page-width">
+    <div class="automated-trading-grid">
+
+      <div class="automated-trading-image">
+        <img
+  src="assets/images/bit.jpg"
+  alt="space x"
+/>
+      </div>
+
+      <div class="automated-trading-content">
+        <h2>Crypto Investing</h2>
+
+        <p>
+         Buy and sell Bitcoin, Ethereum, and other major cryptocurrencies around the clock, commission-free.
+        </p>
+
+        <a href="index.html#contact" class="automated-trading-button">
+          Get Started
+      
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+      
+
+<section class="how-it-works crypto-how-it-works">
+  <div class="page-width">
+
+    <div class="how-it-works-header">
+      <h2>Why Invest in Crypto With Us</h2>
+    </div>
+
+    <div class="how-it-works-steps">
+
+      <div class="how-step">
+        <div class="how-step-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m18 14 4 4-4 4"></path>
+            <path d="m18 2 4 4-4 4"></path>
+            <path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22"></path>
+            <path d="M2 6h1.972a4 4 0 0 1 3.6 2.2"></path>
+            <path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45"></path>
+          </svg>
+        </div>
+
+        <h3>Crypto made convenient</h3>
+
+        <p>
+        Get exposure through crypto ETFs without the hassle of direct ownership or trading.
+        </p>
+      </div>
+
+      <div class="how-step">
+        <div class="how-step-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m17 2 4 4-4 4"></path>
+            <path d="M3 11v-1a4 4 0 0 1 4-4h14"></path>
+            <path d="m7 22-4-4 4-4"></path>
+            <path d="M21 13v1a4 4 0 0 1-4 4H3"></path>
+          </svg>
+        </div>
+
+        <h3>Automated rebalancing</h3>
+
+        <p>
+          We automatically adjust your portfolio with your balance and market movements to help manage risk.
+        </p>
+      </div>
+
+      <div class="how-step">
+        <div class="how-step-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
+            <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+            <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
+          </svg>
+        </div>
+
+        <h3>Diversified investing</h3>
+
+        <p>
+         Crypto can play a role as part of a larger, well-diversified strategy on our platform.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="how-it-works crypto-how-it-works">
+  <div class="page-width">
+
+    <div class="how-it-works-header">
+      <h2>Built for Active Trading</h2>
+    </div>
+
+    <div class="how-it-works-steps">
+
+      <div class="how-step">
+        <div class="how-step-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"></path>
+          </svg>
+        </div>
+
+        <h3>Lightning-fast trading</h3>
+
+        <p>
+       Trade in USD, EUR, and GBP, and schedule buys daily, weekly, or monthly.
+        </p>
+      </div>
+
+      <div class="how-step">
+        <div class="how-step-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+        </div>
+
+        <h3>Security from day one</h3>
+
+        <p>
+         Safety, security, and compliance are built into every transaction, from the very first one.
+        </p>
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="final-cta" id="contact">
+  <div class="page-width">
+    <div class="final-cta-content">
+
+      <p class="eyebrow">READY TO PUT YOUR MONEY TO WORK?</p>
+
+      <p class="final-cta-description">
+        muskverse Equity was founded with a simple goal: to provide dependable
+        and professional investing services that clients can rely on. Over
+        the years, we have built strong relationships with our investors.
+      </p>
+
+      <div class="final-cta-actions">
+        <a
+          class="final-cta-button final-cta-primary"
+          href="mailto:support@Muskverseequity.com"
+        >
+          Get Started
+      
+        </a>
+
+        <a
+          class="final-cta-button final-cta-secondary"
+          href="about-us.html"
+        >
+          Learn More
+      
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    </main>
+    <footer class="site-footer">
+      <div class="page-width footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html#top"
+            ><span>Muskverse</span> equity</a
+          >
+          <p>
+            We aim to give everyone access to the financial system, regardless
+            of their background or bank account balance.
+          </p>
+        </div>
+        <div>
+          <h3>Need Help?</h3>
+          <a href="about-us.html">About Us</a><a href="faq.html">F.A.Q</a
+          ><a href="articles.html">Our Blog</a><a href="#">Terms of Use</a
+          ><a href="#">Privacy Policy</a>
+        </div>
+        <div>
+          <h3>Learn More</h3>
+          <a href="login.html">Login</a
+          ><a href="how-to-invest.html">How to Invest</a
+          ><a href="automated-investing.html">Automated Investing</a
+          ><a href="stocks.html">Stocks</a
+          ><a href="etf-investing.html">ETF Investing</a
+          ><a href="crypto-investing.html">Crypto Investing</a>
+        </div>
+        <div>
+          <h3>Get in Touch</h3>
+          <p class="footer-note">https://Muskverseequity.com/</p>
+          <a href="mailto:support@Muskverseequity.com"
+            >support@Muskverseequity.com</a
+          >
+        </div>
+      </div>
+      <div class="page-width footer-bottom">
+        <span>© 2026 muskverse Equity. All rights reserved.</span
+        ><span
+          >All investments involve risk, including possible loss of
+          capital.</span
+        >
+      </div>
+    </footer>
+    <script src="assets/script.js"></script>
+  </body>
+</html>

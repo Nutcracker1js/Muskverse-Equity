@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse common questions about investing, cash, accounts, and retirement with muskversese Equity."
+    />
+    <title>muskversese Equity | Frequently Asked Questions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/main.css" />
+    <style>
+      :root {
+        --faq-bg: #f6f6f6;
+        --faq-surface: #ffffff;
+        --faq-border: #e7e7e7;
+        --faq-text: #111111;
+        --faq-muted: #5e5e5e;
+        --faq-link: #0000ee;
+        --faq-dark: #0a0a0a;
+      }
+
+      html[data-theme="dark"] {
+        --faq-bg: #0d0d0d;
+        --faq-surface: #141414;
+        --faq-border: #2f2f2f;
+        --faq-text: #ffffff;
+        --faq-muted: #b1b1b1;
+      }
+
+      .faq-hero {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(180deg, #030303 0%, #010101 48%, #030034 100%);
+        padding: 72px 24px 64px;
+      }
+
+      .faq-hero::before,
+      .faq-hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.45;
+      }
+
+      .faq-hero::before {
+        width: 360px;
+        height: 360px;
+        background: #0000ee;
+        top: -140px;
+        right: -80px;
+      }
+
+      .faq-hero::after {
+        width: 360px;
+        height: 360px;
+        background: #ffffff;
+        bottom: -140px;
+        left: -100px;
+      }
+
+      .faq-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .faq-hero-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        margin-bottom: 22px;
+        border-radius: 18px;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.10);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      }
+
+      .faq-hero-icon svg {
+        width: 30px;
+        height: 30px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .faq-hero h1 {
+        margin: 0;
+        color: #fff;
+        font-size: clamp(30px, 3vw, 40px);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+        font-weight: 700;
+      }
+
+      .faq-hero p {
+        max-width: 640px;
+        margin: 16px auto 0;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .faq-section {
+        padding: 72px 24px 88px;
+        background: var(--faq-bg);
+      }
+
+      .faq-shell {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .faq-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .faq-tab {
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 16px;
+        background: #efefef;
+        color: var(--faq-muted);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      html[data-theme="dark"] .faq-tab {
+        background: #1c1c1c;
+        color: #d4d4d4;
+      }
+
+      .faq-tab.active {
+        background: #111111;
+        color: #ffffff;
+      }
+
+      html[data-theme="dark"] .faq-tab.active {
+        background: #ffffff;
+        color: #0a0a0a;
+      }
+
+      .faq-category {
+        display: none;
+      }
+
+      .faq-category.active {
+        display: block;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .faq-item {
+        border: 1px solid var(--faq-border);
+        border-radius: 14px;
+        background: var(--faq-surface);
+        overflow: hidden;
+      }
+
+      .faq-question {
+        width: 100%;
+        border: 0;
+        background: transparent;
+        appearance: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        width: 100%;
+        padding: 18px 20px;
+        text-align: left;
+        font: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--faq-text);
+        cursor: pointer;
+      }
+
+      .faq-question svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 0.2s ease;
+      }
+
+      .faq-item.open .faq-question svg {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        display: none;
+        padding: 0 20px 18px;
+        color: var(--faq-muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .faq-item.open .faq-answer {
+        display: block;
+      }
+
+      .faq-footer-callout {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .faq-footer-callout p {
+        margin: 0 0 16px;
+        color: var(--faq-muted);
+        font-size: 14px;
+      }
+
+      .faq-footer-callout a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 28px;
+        border-radius: 999px;
+        background: #111111;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      html[data-theme="dark"] .faq-footer-callout a {
+        background: #ffffff;
+        color: #111111;
+      }
+
+      @media (max-width: 640px) {
+        .faq-section {
+          padding: 60px 18px 74px;
+        }
+
+        .faq-question {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+  <header class="site-header" id="site-header">
+      <div class="nav-wrap">
+        <a
+          class="brand"
+          href="index.html#top"
+          aria-label="Muskverse Equity home"
+          ><span>Muskverse Equity</span>
+        </a>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <div class="nav-dropdown">
+            <button type="button">
+              <span class="mobile-nav-label">Investing</span><span class="desktop-nav-label">Investing</span><span class="nav-chevron"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6"></path></svg></span>
+            </button>
+            <div class="nav-menu">
+              <a href="automated-investing.html">Automated Investing</a
+              ><a href="crypto-investing.html">Crypto Investing</a
+              ><a href="bond-investing.html">Bond Investing</a
+              ><a href="etf-investing.html">ETF Investing</a
+              ><a href="cash.html">Cash</a>
+            </div>
+          </div>
+          <a href="cash.html">Cash</a>
+          <div class="nav-dropdown">
+            <button type="button">
+              <span class="mobile-nav-label">Learn</span><span class="desktop-nav-label">Learn</span><span class="nav-chevron"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6"></path></svg></span>
+            </button>
+              <div class="nav-menu">
+              <a href="how-to-invest.html">How to Invest</a
+              ><a href="about-us.html">About us</a
+              ><a href="articles.html">Articles</a>
+               <a  href="stocks.html">Stocks</a
+              ><a href="faq.html">F.A.Q</a>
+            </div>
+          </div>
+          <a class="desktop-only-nav-link" href="stocks.html">Stocks</a>
+          <a class="desktop-only-nav-link" href="faq.html">F.A.Q</a>
+          <a class="mobile-nav-login" href="login.html">Sign In</a>
+        </nav>
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+        >
+          <svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path></svg
+          ><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24">
+            <path
+              d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+            ></path>
+          </svg>
+        </button>
+        <a class="button button-small nav-login" href="login.html"
+          >Sign In</a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="faq-hero">
+        <div class="faq-hero-inner">
+          <div class="faq-hero-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.3-2.1 1.8-2.8 2.8A2 2 0 0 0 12 15"></path>
+              <path d="M12 17h.01"></path>
+            </svg>
+          </div>
+          <h1>Frequently Asked Questions</h1>
+          <p>
+            We aim to give everyone access to the financial system, regardless of their background or bank account balance. Here's what people ask us most.
+          </p>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <div class="faq-shell">
+          <div class="faq-tabs" role="tablist" aria-label="FAQ categories">
+            <button class="faq-tab active" type="button" data-target="general">General</button>
+            <button class="faq-tab" type="button" data-target="cash">Cash</button>
+            <button class="faq-tab" type="button" data-target="investing">Investing</button>
+            <button class="faq-tab" type="button" data-target="retirement">Savings and Retirement</button>
+            <button class="faq-tab" type="button" data-target="account">Account Settings</button>
+          </div>
+
+          <div class="faq-category active" id="general">
+            <div class="faq-list">
+              <div class="faq-item open">
+                <button class="faq-question" type="button">
+                  <span>How do I open an account?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Click "Get Started" anywhere on the site, enter your basic details, and verify your identity. Most accounts are ready to fund within minutes.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Is my money safe with you?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Yes. Your investments are held with regulated custodians, your cash balances are eligible for deposit insurance through our partner banks, and every account is protected with bank-level encryption.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>What does it cost to use the platform?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Opening and maintaining an account is free. Specific products — like automated portfolios or premium research — disclose their fees clearly before you opt in, with no hidden charges.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Can I use the platform on my phone?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Yes, the platform is fully responsive and works in any modern mobile browser, with native apps available for iOS and Android.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="cash">
+            <div class="faq-list">
+              <div class="faq-item open">
+                <button class="faq-question" type="button">
+                  <span>How much can I earn on uninvested cash?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Your uninvested cash automatically earns a competitive, published rate — visit the Cash page for today's rate and details.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Are there any fees on my cash balance?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  No. We've never charged an account fee for cash, and we never will.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>How is my cash balance insured?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Cash is held across multiple partner banks, each separately eligible for FDIC insurance, giving you a multiple of the standard single-bank coverage limit.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>How long do cash withdrawals take?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Most withdrawals arrive within one business day. Eligible accounts can also use free same-day transfers when requested before the daily cutoff.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="investing">
+            <div class="faq-list">
+              <div class="faq-item open">
+                <button class="faq-question" type="button">
+                  <span>What can I invest in?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Stocks, ETFs, automated diversified portfolios, cryptocurrency, and US Treasury bond ladders — all from a single account.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Do you charge trading commissions?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  No commissions on stock or ETF trades. Automated portfolios carry a low, clearly disclosed annual advisory fee.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Can I start with a small amount?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Yes — there's no account minimum, and fractional shares let you start investing with whatever amount makes sense for you.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>How do automated portfolios work?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  You answer a few questions about your goals and risk tolerance, and we build and maintain a diversified portfolio of low-cost funds on your behalf, including automatic rebalancing.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="retirement">
+            <div class="faq-list">
+              <div class="faq-item open">
+                <button class="faq-question" type="button">
+                  <span>Do you offer retirement accounts?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Yes — traditional and Roth IRAs are available, both fully automated to make consistent retirement saving simple.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>How much should I be saving for retirement?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  It depends on your timeline and goals, but starting early and contributing consistently matters more than any single target number. Our retirement tools can help you map out a plan.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Can I set up automatic recurring contributions?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Yes, you can schedule recurring transfers into any investment or savings goal on a schedule that fits your paycheck.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>What happens to my retirement account if I change jobs?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Your IRA stays with you regardless of your employer — it isn't tied to any particular job, unlike a 401(k).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-category" id="account">
+            <div class="faq-list">
+              <div class="faq-item open">
+                <button class="faq-question" type="button">
+                  <span>How do I update my personal information?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Go to your account settings from the dashboard menu to update your name, address, phone number, and other personal details at any time.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>How do I change my password or enable two-factor authentication?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Security settings, including password changes and two-factor authentication, are available under Account Settings in your dashboard.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>Can I link an external bank account?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Yes, you can securely link external bank accounts for transfers in and out under the Funding section of your account settings.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  <span>How do I close my account?</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <div class="faq-answer">
+                  Contact support through your dashboard and our team will guide you through the account closure process, including any final transfers.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-footer-callout">
+            <p>Still have a question?</p>
+            <a href="mailto:support@muskverseseequity.com">Contact Support</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="final-cta" id="contact">
+      <div class="page-width">
+        <div class="final-cta-content">
+          <p class="eyebrow">READY TO PUT YOUR MONEY TO WORK?</p>
+          <p class="final-cta-description">
+            muskversese Equity was founded with a simple goal: to provide dependable and professional investing services that clients can rely on. Over the years, we have built strong relationships with our investors.
+          </p>
+
+          <div class="final-cta-actions">
+            <a class="final-cta-button final-cta-primary" href="mailto:support@Muskverseequity.com">Get Started</a>
+            <a class="final-cta-button final-cta-secondary" href="about-us.html">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="page-width footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html#top"><span>Muskverse</span> equity</a>
+          <p>
+            We aim to give everyone access to the financial system, regardless of their background or bank account balance.
+          </p>
+        </div>
+        <div>
+          <h3>Need Help?</h3>
+          <a href="about-us.html">About Us</a><a href="faq.html">F.A.Q</a><a href="articles.html">Our Blog</a><a href="https://muskverseseequity.com/terms">Terms of Use</a><a href="https:muskverseerseequity.com/privacy">Privacy Policy</a>
+        </div>
+        <div>
+          <h3>Learn More</h3>
+          <a href="login.html">Login</a><a href="how-to-invest.html">How to Invest</a><a href="automated-investing.html">Automated Investing</a><a href="stocks.html">Stocks</a><a href="etf-investing.html">ETF Investing</a><a href="crypto-investing.html">Crypto Investing</a>
+        </div>
+        <div>
+          <h3>Get in Touch</h3>
+          <p class="footer-note">https://Muskverseequity.com/</p>
+          <a href="mailto:support@Muskverseequity.com">support@Muskverseequity.com</a>
+        </div>
+      </div>
+      <div class="page-width footer-bottom">
+        <span>© 2026 muskversese Equity. All rights reserved.</span>
+        <span>All investments involve risk, including possible loss of capital.</span>
+      </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+    <script>
+      const faqTabs = document.querySelectorAll('.faq-tab');
+      const faqCategories = document.querySelectorAll('.faq-category');
+      faqTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          faqTabs.forEach((btn) => btn.classList.toggle('active', btn === tab));
+          faqCategories.forEach((panel) => {
+            panel.classList.toggle('active', panel.id === tab.dataset.target);
+          });
+        });
+      });
+
+      document.querySelectorAll('.faq-item').forEach((item) => {
+        const trigger = item.querySelector('.faq-question');
+        trigger.addEventListener('click', () => {
+          const parent = item.closest('.faq-category');
+          const siblings = parent.querySelectorAll('.faq-item');
+          siblings.forEach((sibling) => {
+            if (sibling !== item) {
+              sibling.classList.remove('open');
+            }
+          });
+          item.classList.toggle('open');
+        });
+      });
+    </script>
+  </body>
+</html>

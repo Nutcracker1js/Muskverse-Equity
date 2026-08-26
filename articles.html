@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="muskverse Equity helps investors access thoughtful, long-term opportunities."
+    />
+    <title>muskverse Equity | Articles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/main.css" />
+    <style>
+      :root {
+        --article-bg: #f6f6f6;
+        --article-surface: #ffffff;
+        --article-border: #e7e7e7;
+        --article-text: #111111;
+        --article-muted: #5e5e5e;
+        --article-link: #0000ee;
+      }
+
+      html[data-theme="dark"] {
+        --article-bg: #0d0d0d;
+        --article-surface: #141414;
+        --article-border: #2f2f2f;
+        --article-text: #ffffff;
+        --article-muted: #b1b1b1;
+      }
+
+      .articles-hero {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(180deg, #030303 0%, #010101 48%, #030034 100%);
+        padding: 72px 24px 64px;
+      }
+
+      .articles-hero::before,
+      .articles-hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.5;
+      }
+
+      .articles-hero::before {
+        width: 360px;
+        height: 360px;
+        background: #0000ee;
+        top: -140px;
+        right: -80px;
+      }
+
+      .articles-hero::after {
+        width: 360px;
+        height: 360px;
+        background: #ffffff;
+        bottom: -140px;
+        left: -100px;
+      }
+
+      .articles-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .articles-hero-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        margin-bottom: 22px;
+        border-radius: 18px;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.10);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .articles-hero-icon svg {
+        width: 30px;
+        height: 30px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .articles-hero h1 {
+        margin: 0;
+        color: #fff;
+        font-size: clamp(30px, 3vw, 40px);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+        font-weight: 700;
+      }
+
+      .articles-hero p {
+        max-width: 640px;
+        margin: 16px auto 0;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .articles-section {
+        background: var(--article-bg);
+        padding: 72px 24px 90px;
+      }
+
+      .articles-shell {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .articles-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 40px;
+      }
+
+      .article-tab {
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 16px;
+        background: #efefef;
+        color: var(--article-muted);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      html[data-theme="dark"] .article-tab {
+        background: #1c1c1c;
+        color: #d4d4d4;
+      }
+
+      .article-tab.active {
+        background: #111111;
+        color: #ffffff;
+      }
+
+      html[data-theme="dark"] .article-tab.active {
+        background: #ffffff;
+        color: #0a0a0a;
+      }
+
+      .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px 24px;
+      }
+
+      .article-card {
+        display: flex;
+        flex-direction: column;
+        background: var(--article-surface);
+        border: 1px solid var(--article-border);
+        border-radius: 18px;
+        overflow: hidden;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .article-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      }
+
+      .article-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        background: #ececec;
+      }
+
+      .article-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .article-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 24px;
+      }
+
+      .article-tag {
+        margin: 0 0 8px;
+        color: var(--article-link);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .article-title {
+        margin: 0 0 8px;
+        color: var(--article-text);
+        font-size: 18px;
+        line-height: 1.35;
+        font-weight: 600;
+        letter-spacing: 0;
+      }
+
+      .article-description {
+        margin: 0;
+        color: var(--article-muted);
+        font-size: 14px;
+        line-height: 1.625;
+      }
+
+      @media (max-width: 900px) {
+        .articles-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .articles-section {
+          padding: 58px 18px 72px;
+        }
+
+        .articles-tabs {
+          justify-content: center;
+          overflow: visible;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 40px;
+          padding-bottom: 0;
+        }
+
+        .article-tab {
+          flex: 0 0 auto;
+          padding: 8px 16px;
+          font-size: 14px;
+        }
+
+        .article-body {
+          padding: 24px;
+        }
+
+        .articles-grid {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+   <header class="site-header" id="site-header">
+      <div class="nav-wrap">
+        <a
+          class="brand"
+          href="index.html#top"
+          aria-label="Muskverse Equity home"
+          ><span>Muskverse Equity</span>
+        </a>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <div class="nav-dropdown">
+            <button type="button">
+              <span class="mobile-nav-label">Investing</span><span class="desktop-nav-label">Investing</span><span class="nav-chevron"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6"></path></svg></span>
+            </button>
+            <div class="nav-menu">
+              <a href="automated-investing.html">Automated Investing</a
+              ><a href="crypto-investing.html">Crypto Investing</a
+              ><a href="bond-investing.html">Bond Investing</a
+              ><a href="etf-investing.html">ETF Investing</a
+              ><a href="cash.html">Cash</a>
+            </div>
+          </div>
+          <a href="cash.html">Cash</a>
+          <div class="nav-dropdown">
+            <button type="button">
+              <span class="mobile-nav-label">Learn</span><span class="desktop-nav-label">Learn</span><span class="nav-chevron"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6"></path></svg></span>
+            </button>
+              <div class="nav-menu">
+              <a href="how-to-invest.html">How to Invest</a
+              ><a href="about-us.html">About us</a
+              ><a href="articles.html">Articles</a>
+               <a  href="stocks.html">Stocks</a
+              ><a href="faq.html">F.A.Q</a>
+            </div>
+          </div>
+          <a class="desktop-only-nav-link" href="stocks.html">Stocks</a>
+          <a class="desktop-only-nav-link" href="faq.html">F.A.Q</a>
+          <a class="mobile-nav-login" href="login.html">Sign In</a>
+        </nav>
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+        >
+          <svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path></svg
+          ><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24">
+            <path
+              d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+            ></path>
+          </svg>
+        </button>
+        <a class="button button-small nav-login" href="login.html"
+          >Sign In</a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="articles-hero">
+        <div class="articles-hero-inner">
+          <div class="articles-hero-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M2 6.5A2.5 2.5 0 0 1 4.5 4H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4.5A2.5 2.5 0 0 1 2 15.5z"></path>
+              <path d="M7 8h10"></path>
+              <path d="M7 12h10"></path>
+            </svg>
+          </div>
+          <h1>Insights &amp; Articles</h1>
+          <p>
+            Straightforward reads on investing, saving, and building wealth — no jargon, no sales pitch, just what we'd tell a friend.
+          </p>
+        </div>
+      </section>
+
+      <section class="articles-section">
+        <div class="articles-shell">
+          <div class="articles-tabs" role="tablist" aria-label="Article categories">
+            <button class="article-tab active" type="button" data-category="all">All Articles</button>
+            <button class="article-tab" type="button" data-category="retirement">Retirement</button>
+            <button class="article-tab" type="button" data-category="savings">Savings</button>
+            <button class="article-tab" type="button" data-category="crypto">Crypto</button>
+            <button class="article-tab" type="button" data-category="planning">Planning</button>
+            <button class="article-tab" type="button" data-category="investing">Investing</button>
+          </div>
+
+          <div class="articles-grid">
+            <a href="how-much-should-you-actually-save-for-retirement.html" class="article-card article-card--retirement" data-category="retirement">
+              <span class="article-image"><img src="assets/images/retirement.jpg" alt="How Much Should You Actually Save for Retirement?" /></span>
+              <span class="article-body">
+                <span class="article-tag">Retirement</span>
+                <span class="article-title">How Much Should You Actually Save for Retirement?</span>
+                <span class="article-description">There’s no single magic number — but there is a simple framework for figuring out what “enough” looks like for your timeline and goals.</span>
+              </span>
+            </a>
+
+            <a href="emergency-fund-first-investing-second.html" class="article-card article-card--savings" data-category="savings">
+              <span class="article-image"><img src="assets/images/savings.jpg" alt="Emergency Fund First, Investing Second" /></span>
+              <span class="article-body">
+                <span class="article-tag">Savings</span>
+                <span class="article-title">Emergency Fund First, Investing Second</span>
+                <span class="article-description">Before chasing returns, a cash cushion protects you from having to sell investments at the worst possible moment.</span>
+              </span>
+            </a>
+
+            <a href="diversifying-beyond-stocks-where-crypto-fits.html" class="article-card article-card--crypto" data-category="crypto">
+              <span class="article-image"><img src="assets/images/crypto.jpg" alt="Diversifying Beyond Stocks: Where Crypto Fits" /></span>
+              <span class="article-body">
+                <span class="article-tag">Crypto</span>
+                <span class="article-title">Diversifying Beyond Stocks: Where Crypto Fits</span>
+                <span class="article-description">Digital assets carry real volatility — here’s how to think about position sizing so one bad week doesn’t derail your whole portfolio.</span>
+              </span>
+            </a>
+
+            <a href="dollar-cost-averaging-explained-simply.html" class="article-card article-card--planning" data-category="planning">
+              <span class="article-image"><img src="assets/images/planning.jpg" alt="Dollar Cost Averaging, Explained Simply" /></span>
+              <span class="article-body">
+                <span class="article-tag">Planning</span>
+                <span class="article-title">Dollar Cost Averaging, Explained Simply</span>
+                <span class="article-description">Investing a fixed amount on a regular schedule smooths out the highs and lows, removing the guesswork of trying to time the market.</span>
+              </span>
+            </a>
+
+            <a href="why-diversification-is-the-closest-thing-to-a-free-lunch.html" class="article-card article-card--investing" data-category="investing">
+              <span class="article-image"><img src="assets/images/investing.jpg" alt="Why Diversification Is the Closest Thing to a Free Lunch" /></span>
+              <span class="article-body">
+                <span class="article-tag">Investing</span>
+                <span class="article-title">Why Diversification Is the Closest Thing to a Free Lunch</span>
+                <span class="article-description">Spreading risk across asset classes won’t guarantee gains, but it consistently reduces how hard you get hit when one bet goes wrong.</span>
+              </span>
+            </a>
+
+            <a href="is-a-roth-conversion-right-for-you.html" class="article-card article-card--retirement" data-category="retirement">
+              <span class="article-image"><img src="assets/images/reee.jpg" alt="Is a Roth Conversion Right for You?" /></span>
+              <span class="article-body">
+                <span class="article-tag">Retirement</span>
+                <span class="article-title">Is a Roth Conversion Right for You?</span>
+                <span class="article-description">Converting a traditional IRA to a Roth can be a smart move in the right circumstances — here are two scenarios where it tends to make sense.</span>
+              </span>
+            </a>
+
+            <a href="the-benefits-and-drawbacks-of-iras.html" class="article-card article-card--retirement" data-category="retirement">
+              <span class="article-image"><img src="assets/images/re.jpg" alt="The Benefits and Drawbacks of IRAs" /></span>
+              <span class="article-body">
+                <span class="article-tag">Retirement</span>
+                <span class="article-title">The Benefits and Drawbacks of IRAs</span>
+                <span class="article-description">IRAs are one of the most flexible tools for long-term retirement saving — but they come with a few trade-offs worth understanding upfront.</span>
+              </span>
+            </a>
+
+            <a href="wall-streets-6-top-world-cup-stock-picks.html" class="article-card article-card--investing" data-category="investing">
+              <span class="article-image"><img src="assets/images/inv.jpg" alt="Wall Street's 6 Top World Cup Stock Picks" /></span>
+              <span class="article-body">
+                <span class="article-tag">Investing</span>
+                <span class="article-title">Wall Street's 6 Top World Cup Stock Picks</span>
+                <span class="article-description">Declines feel alarming, but they're a routine part of investing. Here’s the historical perspective worth keeping in mind.</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="final-cta" id="contact">
+      <div class="page-width">
+        <div class="final-cta-content">
+          <p class="eyebrow">READY TO PUT YOUR MONEY TO WORK?</p>
+          <p class="final-cta-description">
+            muskverse Equity was founded with a simple goal: to provide dependable and professional investing services that clients can rely on. Over the years, we have built strong relationships with our investors.
+          </p>
+          <div class="final-cta-actions">
+            <a class="final-cta-button final-cta-primary" href="mailto:support@Muskverseequity.com">Get Started</a>
+            <a class="final-cta-button final-cta-secondary" href="about-us.html">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="page-width footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html#top"><span>Muskverse</span> equity</a>
+          <p>
+            We aim to give everyone access to the financial system, regardless of their background or bank account balance.
+          </p>
+        </div>
+        <div>
+          <h3>Need Help?</h3>
+          <a href="about-us.html">About Us</a><a href="faq.html">F.A.Q</a><a href="articles.html">Our Blog</a><a href="https://muskverseequity.com/terms">Terms of Use</a><a href="https://muskverseequity.com/privacy">Privacy Policy</a>
+        </div>
+        <div>
+          <h3>Learn More</h3>
+          <a href="login.html">Login</a><a href="how-to-invest.html">How to Invest</a><a href="automated-investing.html">Automated Investing</a><a href="stocks.html">Stocks</a><a href="etf-investing.html">ETF Investing</a><a href="crypto-investing.html">Crypto Investing</a>
+        </div>
+        <div>
+          <h3>Get in Touch</h3>
+          <p class="footer-note">https://Muskverseequity.com/</p>
+          <a href="mailto:support@Muskverseequity.com">support@Muskverseequity.com</a>
+        </div>
+      </div>
+      <div class="page-width footer-bottom">
+        <span>© 2026 muskverse Equity. All rights reserved.</span>
+        <span>All investments involve risk, including possible loss of capital.</span>
+      </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+    <script>
+      const articleTabs = document.querySelectorAll('.article-tab');
+      const articleCards = document.querySelectorAll('.article-card');
+
+      articleTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const category = tab.dataset.category;
+          articleTabs.forEach((btn) => btn.classList.toggle('active', btn === tab));
+
+          articleCards.forEach((card) => {
+            const cardCategory = card.dataset.category;
+            const show = category === 'all' || cardCategory === category;
+            card.style.display = show ? 'flex' : 'none';
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
