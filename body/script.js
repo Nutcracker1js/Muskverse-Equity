@@ -1051,6 +1051,7 @@ if (planModalOverlay && planOpenButtons.length) {
   const plansEmpty = document.querySelector('#savings-plans-empty');
   const plansWrap = document.querySelector('#savings-plans-wrap');
   const plansTbody = document.querySelector('#savings-plans-tbody');
+  const plansClearAll = document.querySelector('#plans-clear-all');
 
   const planDetailOverlay = document.querySelector('#plan-detail-modal-overlay');
   const planDetailClose = document.querySelector('#plan-detail-modal-close');
@@ -1187,10 +1188,13 @@ if (planModalOverlay && planOpenButtons.length) {
     if (!plans.length) {
       plansEmpty.hidden = false;
       plansWrap.hidden = true;
+      if (plansClearAll) plansClearAll.hidden = true;
+      plansTbody.innerHTML = '';
       return;
     }
     plansEmpty.hidden = true;
     plansWrap.hidden = false;
+    if (plansClearAll) plansClearAll.hidden = false;
     plansTbody.innerHTML = plans
       .map((plan) => {
         const unlock = new Date(plan.unlockDate);
@@ -1288,6 +1292,12 @@ if (planModalOverlay && planOpenButtons.length) {
   };
 
   renderPlansList(loadPlans());
+
+  plansClearAll?.addEventListener('click', () => {
+    const confirmed = window.confirm('This will permanently hide all of your active savings plans. This cannot be undone. Continue?');
+    if (!confirmed) return;
+    savePlans([]);
+  });
 
   planForm?.addEventListener('submit', (event) => {
     event.preventDefault();
