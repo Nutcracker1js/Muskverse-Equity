@@ -209,7 +209,7 @@
             </div>
 
             <div class="dash-opp-grid">
-              <div class="dash-opp-card" data-plan="Flex Save" data-apy="4.5" data-min="0" data-lock="Withdraw anytime, no lock-up required">
+              <div class="dash-opp-card" data-plan="Flex Save" data-apy="4.5" data-min="0" data-lock="Withdraw anytime, no lock-up required" data-breakable="true">
                 <div class="dash-opp-head">
                   <div>
                     <p class="dash-opp-title">Flex Save</p>
@@ -353,7 +353,7 @@
             <label for="plan-amount">Deposit Amount ($)</label>
             <div class="dash-amount-wrap">
               <span>$</span>
-              <input type="number" id="plan-amount" min="0" step="10" placeholder="0.00" required />
+              <input type="number" id="plan-amount" min="0" step="10" placeholder="0.00" />
             </div>
           </div>
 
@@ -364,7 +364,7 @@
             <button type="button" class="dash-quick-amount dash-plan-amount-preset" data-amount="5000">$5,000</button>
           </div>
 
-          <div class="dash-field">
+          <div class="dash-field" id="plan-duration-field">
             <label>Lock-up Duration</label>
             <div class="dash-quick-amounts">
               <button type="button" class="dash-quick-amount dash-plan-duration" data-months="3">3 Months</button>
@@ -375,6 +375,8 @@
             </div>
             <input type="date" id="plan-custom-date" class="dash-plan-date-input" hidden />
           </div>
+
+          <p class="dash-plan-disclaimer" id="plan-modal-disclaimer" hidden></p>
 
           <div class="dash-available-balance">
             <span>Unlock Date</span>
@@ -394,6 +396,38 @@
           </button>
           <p class="dash-form-note" id="plan-modal-note"></p>
         </form>
+      </div>
+    </div>
+
+    <div class="dash-modal-overlay" id="plan-detail-modal-overlay">
+      <div class="dash-modal" role="dialog" aria-modal="true" aria-labelledby="plan-detail-heading">
+        <button type="button" class="dash-modal-close" id="plan-detail-modal-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6l12 12"></path>
+            <path d="M18 6 6 18"></path>
+          </svg>
+        </button>
+
+        <h2 id="plan-detail-heading"><span id="plan-detail-name">Flex Save</span></h2>
+        <p class="dash-modal-lead" id="plan-detail-status-line">Opened &mdash;</p>
+
+        <div class="dash-session-details" style="margin-bottom: 20px">
+          <div class="dash-session-detail"><span>Amount</span><strong id="plan-detail-amount">$0.00</strong></div>
+          <div class="dash-session-detail"><span>APY</span><strong id="plan-detail-apy">0%</strong></div>
+          <div class="dash-session-detail"><span>Unlock Date</span><strong id="plan-detail-unlock">&mdash;</strong></div>
+          <div class="dash-session-detail"><span>Projected Interest</span><strong id="plan-detail-interest">$0.00</strong></div>
+        </div>
+
+        <p class="dash-plan-disclaimer" id="plan-detail-disclaimer" hidden></p>
+
+        <button type="button" class="dash-btn-ghost dash-plan-break-btn" id="plan-break-btn" style="width: 100%; justify-content: center" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+            <path d="M12 2v10"></path>
+          </svg>
+          Break Savings
+        </button>
+        <p class="dash-form-note" id="plan-detail-note"></p>
       </div>
     </div>
 

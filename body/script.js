@@ -106,6 +106,46 @@ const hasTradingViewWidgets = Boolean(
   tickerContainer || symbolContainer || marketOverviewContainer || marketHotlistContainer || marketCalendarContainer || advancedChartContainer
 );
 
+const STRATEGY_ASSETS = {
+  'Automated Portfolios': [
+    { symbol: 'CONSV', name: 'Conservative Portfolio', price: 100, tv: 'AMEX:AOK' },
+    { symbol: 'BALNC', name: 'Balanced Portfolio', price: 100, tv: 'AMEX:AOM' },
+    { symbol: 'AGGR', name: 'Aggressive Portfolio', price: 100, tv: 'AMEX:AOA' },
+  ],
+  Stocks: [
+    { symbol: 'AAPL', name: 'Apple Inc.', price: 319.7, tv: 'NASDAQ:AAPL' },
+    { symbol: 'MSFT', name: 'Microsoft Corp.', price: 428.15, tv: 'NASDAQ:MSFT' },
+    { symbol: 'TSLA', name: 'Tesla, Inc.', price: 248.9, tv: 'NASDAQ:TSLA' },
+    { symbol: 'AMZN', name: 'Amazon.com, Inc.', price: 231.45, tv: 'NASDAQ:AMZN' },
+  ],
+  ETFs: [
+    { symbol: 'VOO', name: 'Vanguard S&P 500 ETF', price: 512.3, tv: 'AMEX:VOO' },
+    { symbol: 'QQQ', name: 'Invesco QQQ Trust', price: 486.2, tv: 'NASDAQ:QQQ' },
+    { symbol: 'VTI', name: 'Vanguard Total Stock Market ETF', price: 268.9, tv: 'AMEX:VTI' },
+  ],
+  Cryptocurrency: [
+    { symbol: 'BTC', name: 'Bitcoin', price: 77686.0, tv: 'BITSTAMP:BTCUSD' },
+    { symbol: 'ETH', name: 'Ethereum', price: 2436.1, tv: 'BITSTAMP:ETHUSD' },
+    { symbol: 'SOL', name: 'Solana', price: 178.4, tv: 'COINBASE:SOLUSD' },
+  ],
+  Bonds: [
+    { symbol: 'UST10Y', name: 'US Treasury 10-Year Note', price: 100, tv: 'TVC:US10Y' },
+    { symbol: 'CORP', name: 'Investment-Grade Corporate Bond Fund', price: 50, tv: 'AMEX:LQD' },
+    { symbol: 'MUNI', name: 'Municipal Bond Fund', price: 25, tv: 'AMEX:MUB' },
+  ],
+};
+
+const ASSET_LOOKUP = Object.values(STRATEGY_ASSETS)
+  .flat()
+  .reduce((map, asset) => {
+    map[asset.symbol] = asset;
+    return map;
+  }, {});
+
+const presetSymbol = new URLSearchParams(window.location.search).get('symbol');
+const presetAsset = presetSymbol ? ASSET_LOOKUP[presetSymbol] : null;
+const activeChartSymbol = presetAsset?.tv || 'NASDAQ:AAPL';
+
 function loadTradingViewWidget(container, src, config) {
   if (!container) return;
   container.innerHTML = '<div class="tradingview-widget-container__widget"></div>';
@@ -240,7 +280,7 @@ function refreshTradingViewWidgets(theme) {
 
   loadTradingViewWidget(advancedChartContainer, 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js', {
     autosize: true,
-    symbol: 'NASDAQ:AAPL',
+    symbol: activeChartSymbol,
     interval: 'D',
     timezone: 'Etc/UTC',
     theme,
@@ -442,35 +482,6 @@ if (holdingModalOverlay && holdingsTbody) {
 
 const investModalOverlay = document.querySelector('#invest-modal-overlay');
 const investButtons = document.querySelectorAll('.dash-invest-now');
-
-const STRATEGY_ASSETS = {
-  'Automated Portfolios': [
-    { symbol: 'CONSV', name: 'Conservative Portfolio', price: 100 },
-    { symbol: 'BALNC', name: 'Balanced Portfolio', price: 100 },
-    { symbol: 'AGGR', name: 'Aggressive Portfolio', price: 100 },
-  ],
-  Stocks: [
-    { symbol: 'AAPL', name: 'Apple Inc.', price: 319.7 },
-    { symbol: 'MSFT', name: 'Microsoft Corp.', price: 428.15 },
-    { symbol: 'TSLA', name: 'Tesla, Inc.', price: 248.9 },
-    { symbol: 'AMZN', name: 'Amazon.com, Inc.', price: 231.45 },
-  ],
-  ETFs: [
-    { symbol: 'VOO', name: 'Vanguard S&P 500 ETF', price: 512.3 },
-    { symbol: 'QQQ', name: 'Invesco QQQ Trust', price: 486.2 },
-    { symbol: 'VTI', name: 'Vanguard Total Stock Market ETF', price: 268.9 },
-  ],
-  Cryptocurrency: [
-    { symbol: 'BTC', name: 'Bitcoin', price: 77686.0 },
-    { symbol: 'ETH', name: 'Ethereum', price: 2436.1 },
-    { symbol: 'SOL', name: 'Solana', price: 178.4 },
-  ],
-  Bonds: [
-    { symbol: 'UST10Y', name: 'US Treasury 10-Year Note', price: 100 },
-    { symbol: 'CORP', name: 'Investment-Grade Corporate Bond Fund', price: 50 },
-    { symbol: 'MUNI', name: 'Municipal Bond Fund', price: 25 },
-  ],
-};
 
 if (investModalOverlay && investButtons.length) {
   const investClose = document.querySelector('#invest-modal-close');
@@ -879,9 +890,18 @@ if (orderSymbol && orderQuantity && orderEstimate) {
   orderSymbol.addEventListener('change', updateEstimate);
   orderQuantity.addEventListener('input', updateEstimate);
 
-  const presetSymbol = new URLSearchParams(window.location.search).get('symbol');
-  if (presetSymbol && [...orderSymbol.options].some((opt) => opt.value === presetSymbol)) {
-    orderSymbol.value = presetSymbol;
+  if (presetSymbol) {
+    const hasOption = [...orderSymbol.options].some((opt) => opt.value === presetSymbol);
+    if (!hasOption && presetAsset) {
+      const option = document.createElement('option');
+      option.value = presetAsset.symbol;
+      option.dataset.price = String(presetAsset.price);
+      option.textContent = `${presetAsset.symbol} · ${presetAsset.name}`;
+      orderSymbol.appendChild(option);
+    }
+    if (hasOption || presetAsset) {
+      orderSymbol.value = presetSymbol;
+    }
   }
   updateEstimate();
 
@@ -903,18 +923,11 @@ orderSideButtons.forEach((button) => {
   });
 });
 
-const sessionCard = document.querySelector('#trading-session-card');
+const sessionsList = document.querySelector('#trading-sessions-list');
 const orderForm = document.querySelector('#order-symbol')?.closest('form');
 
-if (sessionCard && orderForm) {
-  const SESSION_KEY = 'Muskverse-trading-session';
-  const sessionSymbol = document.querySelector('#session-symbol');
-  const sessionSide = document.querySelector('#session-side');
-  const sessionQty = document.querySelector('#session-qty');
-  const sessionTotal = document.querySelector('#session-total');
-  const sessionTime = document.querySelector('#session-time');
-  const endSessionBtn = document.querySelector('#end-session-btn');
-  let sessionTimer = null;
+if (sessionsList && orderForm) {
+  const SESSION_KEY = 'Muskverse-trading-sessions';
 
   const formatElapsed = (startedAt) => {
     const seconds = Math.max(0, Math.floor((Date.now() - startedAt) / 1000));
@@ -923,54 +936,97 @@ if (sessionCard && orderForm) {
     return `${mins}:${secs}`;
   };
 
-  const startTimer = (startedAt) => {
-    clearInterval(sessionTimer);
-    sessionTime.textContent = formatElapsed(startedAt);
-    sessionTimer = setInterval(() => {
-      sessionTime.textContent = formatElapsed(startedAt);
-    }, 1000);
-  };
-
-  const renderSession = (session) => {
-    sessionSymbol.textContent = session.symbol;
-    sessionSide.textContent = session.side === 'buy' ? 'Buy' : 'Sell';
-    sessionSide.className = session.side === 'buy' ? 'is-buy' : 'is-sell';
-    sessionQty.textContent = session.qty;
-    sessionTotal.textContent = session.total;
-    sessionCard.hidden = false;
-    startTimer(session.startedAt);
-  };
-
-  const endSession = () => {
-    sessionCard.hidden = true;
-    clearInterval(sessionTimer);
-    localStorage.removeItem(SESSION_KEY);
-  };
-
-  const saved = localStorage.getItem(SESSION_KEY);
-  if (saved) {
+  const loadSessions = () => {
     try {
-      renderSession(JSON.parse(saved));
+      const parsed = JSON.parse(localStorage.getItem(SESSION_KEY) || '[]');
+      return Array.isArray(parsed) ? parsed : [];
     } catch (error) {
-      localStorage.removeItem(SESSION_KEY);
+      return [];
     }
-  }
+  };
+
+  const tickSessions = () => {
+    sessionsList.querySelectorAll('.dash-session-time').forEach((el) => {
+      el.textContent = formatElapsed(Number(el.dataset.startedAt));
+    });
+  };
+
+  const renderSessions = (sessions) => {
+    sessionsList.innerHTML = sessions
+      .map(
+        (session) => `
+          <section class="dash-card dash-session-card" data-session-id="${session.id}">
+            <div class="dash-session-head">
+              <div class="dash-session-status">
+                <span class="dash-session-dot"></span>
+                Trading Session Active
+              </div>
+              <span class="dash-session-time" data-started-at="${session.startedAt}">00:00</span>
+            </div>
+
+            <div class="dash-session-details">
+              <div class="dash-session-detail"><span>Symbol</span><strong>${session.symbol}</strong></div>
+              <div class="dash-session-detail"><span>Side</span><strong class="${session.side === 'buy' ? 'is-buy' : 'is-sell'}">${session.side === 'buy' ? 'Buy' : 'Sell'}</strong></div>
+              <div class="dash-session-detail"><span>Quantity</span><strong>${session.qty}</strong></div>
+              <div class="dash-session-detail"><span>Total</span><strong>${session.total}</strong></div>
+            </div>
+
+            <button type="button" class="dash-btn-ghost dash-end-session-btn" data-session-id="${session.id}" style="width: 100%; justify-content: center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9 9h6v6H9z"></path>
+              </svg>
+              End Trading Session
+            </button>
+          </section>
+        `
+      )
+      .join('');
+    tickSessions();
+  };
+
+  const saveSessions = (sessions) => {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(sessions));
+    renderSessions(sessions);
+  };
+
+  renderSessions(loadSessions());
+  setInterval(tickSessions, 1000);
+
+  sessionsList.addEventListener('click', (event) => {
+    const endBtn = event.target.closest('.dash-end-session-btn');
+    if (!endBtn) return;
+    const sessions = loadSessions().filter((session) => session.id !== endBtn.dataset.sessionId);
+    saveSessions(sessions);
+  });
+
+  const orderToast = document.querySelector('#order-toast');
+  let toastTimer = null;
+
+  const showOrderToast = () => {
+    if (!orderToast) return;
+    orderToast.classList.add('is-open');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => orderToast.classList.remove('is-open'), 2600);
+  };
 
   orderForm.addEventListener('submit', () => {
     const selected = orderSymbol.selectedOptions[0];
     const side = document.querySelector('.dash-order-side-btn.is-active')?.dataset.side || 'buy';
     const session = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       symbol: selected.value,
       side,
       qty: orderQuantity.value,
       total: orderEstimate.textContent,
       startedAt: Date.now(),
     };
-    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-    renderSession(session);
+    const sessions = loadSessions();
+    sessions.push(session);
+    saveSessions(sessions);
+    showOrderToast();
+    sessionsList.querySelector(`[data-session-id="${session.id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
-
-  endSessionBtn?.addEventListener('click', endSession);
 }
 
 const planModalOverlay = document.querySelector('#plan-modal-overlay');
@@ -984,15 +1040,29 @@ if (planModalOverlay && planOpenButtons.length) {
   const planForm = document.querySelector('#plan-form');
   const planAmountInput = document.querySelector('#plan-amount');
   const planAmountPresets = document.querySelectorAll('.dash-plan-amount-preset');
+  const planDurationField = document.querySelector('#plan-duration-field');
   const planDurationButtons = document.querySelectorAll('.dash-plan-duration');
   const planCustomToggle = document.querySelector('#plan-duration-custom-toggle');
   const planCustomDate = document.querySelector('#plan-custom-date');
   const planUnlockPreview = document.querySelector('#plan-unlock-preview');
   const planInterestPreview = document.querySelector('#plan-interest-preview');
   const planNote = document.querySelector('#plan-modal-note');
+  const planDisclaimer = document.querySelector('#plan-modal-disclaimer');
   const plansEmpty = document.querySelector('#savings-plans-empty');
   const plansWrap = document.querySelector('#savings-plans-wrap');
   const plansTbody = document.querySelector('#savings-plans-tbody');
+
+  const planDetailOverlay = document.querySelector('#plan-detail-modal-overlay');
+  const planDetailClose = document.querySelector('#plan-detail-modal-close');
+  const planDetailName = document.querySelector('#plan-detail-name');
+  const planDetailStatusLine = document.querySelector('#plan-detail-status-line');
+  const planDetailAmount = document.querySelector('#plan-detail-amount');
+  const planDetailApy = document.querySelector('#plan-detail-apy');
+  const planDetailUnlock = document.querySelector('#plan-detail-unlock');
+  const planDetailInterest = document.querySelector('#plan-detail-interest');
+  const planDetailDisclaimer = document.querySelector('#plan-detail-disclaimer');
+  const planBreakBtn = document.querySelector('#plan-break-btn');
+  const planDetailNote = document.querySelector('#plan-detail-note');
 
   const planFormatUSD = (value) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   const planFormatDate = (date) => date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -1009,6 +1079,15 @@ if (planModalOverlay && planOpenButtons.length) {
 
   const updatePlanPreview = () => {
     const amount = parseFloat(planAmountInput.value || '0');
+
+    if (currentPlan?.breakable) {
+      planUnlockPreview.textContent = 'Anytime';
+      const interest = amount * (currentPlan.apy / 100);
+      planInterestPreview.textContent = planFormatUSD(Math.max(0, interest));
+      planDisclaimer.hidden = true;
+      return;
+    }
+
     if (selectedUnlockDate && currentPlan) {
       planUnlockPreview.textContent = planFormatDate(selectedUnlockDate);
       const days = Math.max(0, (selectedUnlockDate - new Date()) / (1000 * 60 * 60 * 24));
@@ -1018,6 +1097,13 @@ if (planModalOverlay && planOpenButtons.length) {
       planUnlockPreview.textContent = '—';
       planInterestPreview.textContent = '$0.00';
     }
+
+    if (currentPlan) {
+      planDisclaimer.hidden = false;
+      planDisclaimer.textContent = selectedUnlockDate
+        ? `This plan cannot be broken early — funds stay locked until ${planFormatDate(selectedUnlockDate)}.`
+        : 'This plan cannot be broken early — once you choose a lock-up duration, funds stay locked until it ends.';
+    }
   };
 
   const openPlanModal = (card) => {
@@ -1026,14 +1112,16 @@ if (planModalOverlay && planOpenButtons.length) {
       apy: parseFloat(card.dataset.apy),
       min: parseFloat(card.dataset.min),
       lock: card.dataset.lock,
+      breakable: card.dataset.breakable === 'true',
     };
     selectedUnlockDate = null;
     planNameEl.textContent = currentPlan.name;
     planLockEl.textContent = `${currentPlan.lock}.`;
-    planAmountInput.value = currentPlan.min > 0 ? currentPlan.min : '';
+    planAmountInput.value = currentPlan.min > 0 ? currentPlan.min : 100;
     planNote.textContent = '';
     planAmountPresets.forEach((btn) => btn.classList.remove('is-active'));
     clearDurationSelection();
+    planDurationField.hidden = currentPlan.breakable;
     updatePlanPreview();
 
     planModalOverlay.classList.add('is-open');
@@ -1106,13 +1194,13 @@ if (planModalOverlay && planOpenButtons.length) {
     plansTbody.innerHTML = plans
       .map((plan) => {
         const unlock = new Date(plan.unlockDate);
-        const isAvailable = plan.min === 0 || unlock <= new Date();
+        const isAvailable = plan.breakable || unlock <= new Date();
         return `
-          <tr>
+          <tr tabindex="0" role="button" data-plan-id="${plan.id}">
             <td>${plan.name}</td>
             <td class="is-numeric">${planFormatUSD(plan.amount)}</td>
             <td class="is-numeric">${planFormatDate(new Date(plan.openedDate))}</td>
-            <td class="is-numeric">${plan.min === 0 ? 'Anytime' : planFormatDate(unlock)}</td>
+            <td class="is-numeric">${plan.breakable ? 'Anytime' : planFormatDate(unlock)}</td>
             <td class="is-numeric is-gain">+${planFormatUSD(plan.projectedInterest)}</td>
             <td class="is-numeric"><span class="dash-badge ${isAvailable ? 'is-open' : 'is-pending'}">${isAvailable ? 'Available' : 'Locked'}</span></td>
           </tr>
@@ -1120,6 +1208,71 @@ if (planModalOverlay && planOpenButtons.length) {
       })
       .join('');
   };
+
+  const openPlanDetailModal = (plan) => {
+    const unlock = new Date(plan.unlockDate);
+    planDetailName.textContent = plan.name;
+    planDetailStatusLine.textContent = `Opened ${planFormatDate(new Date(plan.openedDate))} · ${plan.apy}% APY`;
+    planDetailAmount.textContent = planFormatUSD(plan.amount);
+    planDetailApy.textContent = `${plan.apy}%`;
+    planDetailUnlock.textContent = plan.breakable ? 'Anytime' : planFormatDate(unlock);
+    planDetailInterest.textContent = `+${planFormatUSD(plan.projectedInterest)}`;
+    planDetailNote.textContent = '';
+
+    if (plan.breakable) {
+      planDetailDisclaimer.hidden = true;
+      planBreakBtn.hidden = false;
+      planBreakBtn.disabled = false;
+      planBreakBtn.dataset.planId = plan.id;
+    } else {
+      planBreakBtn.hidden = true;
+      planDetailDisclaimer.hidden = false;
+      planDetailDisclaimer.textContent = `This plan cannot be broken early — funds stay locked until ${planFormatDate(unlock)}.`;
+    }
+
+    planDetailOverlay.classList.add('is-open');
+    lockScroll();
+  };
+
+  const closePlanDetailModal = () => {
+    planDetailOverlay.classList.remove('is-open');
+    unlockScroll();
+  };
+
+  if (planDetailOverlay) {
+    plansTbody.addEventListener('click', (event) => {
+      const row = event.target.closest('tr');
+      if (!row) return;
+      const plan = loadPlans().find((p) => p.id === row.dataset.planId);
+      if (plan) openPlanDetailModal(plan);
+    });
+    plansTbody.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const row = event.target.closest('tr');
+      if (!row) return;
+      event.preventDefault();
+      const plan = loadPlans().find((p) => p.id === row.dataset.planId);
+      if (plan) openPlanDetailModal(plan);
+    });
+
+    planDetailClose?.addEventListener('click', closePlanDetailModal);
+    planDetailOverlay.addEventListener('click', (event) => {
+      if (event.target === planDetailOverlay) closePlanDetailModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && planDetailOverlay.classList.contains('is-open')) closePlanDetailModal();
+    });
+
+    planBreakBtn?.addEventListener('click', () => {
+      const planId = planBreakBtn.dataset.planId;
+      planBreakBtn.disabled = true;
+      const remaining = loadPlans().filter((p) => p.id !== planId);
+      savePlans(remaining);
+      planDetailNote.textContent = 'Savings broken. Funds returned to your balance.';
+      planDetailNote.style.color = 'var(--dash-blue)';
+      setTimeout(closePlanDetailModal, 900);
+    });
+  }
 
   const loadPlans = () => {
     try {
@@ -1149,28 +1302,31 @@ if (planModalOverlay && planOpenButtons.length) {
       planNote.style.color = 'var(--dash-red)';
       return;
     }
-    if (!selectedUnlockDate) {
+    if (!currentPlan.breakable && !selectedUnlockDate) {
       planNote.textContent = 'Choose a lock-up duration or pick a date.';
       planNote.style.color = 'var(--dash-red)';
       return;
     }
 
-    const days = Math.max(0, (selectedUnlockDate - new Date()) / (1000 * 60 * 60 * 24));
+    const unlockDate = currentPlan.breakable ? new Date() : selectedUnlockDate;
+    const days = currentPlan.breakable ? 365 : Math.max(0, (unlockDate - new Date()) / (1000 * 60 * 60 * 24));
     const projectedInterest = amount * (currentPlan.apy / 100) * (days / 365);
 
     const plans = loadPlans();
     plans.push({
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       name: currentPlan.name,
       apy: currentPlan.apy,
       min: currentPlan.min,
+      breakable: currentPlan.breakable,
       amount,
       openedDate: new Date().toISOString(),
-      unlockDate: selectedUnlockDate.toISOString(),
+      unlockDate: unlockDate.toISOString(),
       projectedInterest,
     });
     savePlans(plans);
 
-    planNote.textContent = `${currentPlan.name} opened with ${planFormatUSD(amount)}.`;
+    planNote.textContent = `Savings started — ${currentPlan.name} opened with ${planFormatUSD(amount)}.`;
     planNote.style.color = 'var(--dash-blue)';
     setTimeout(closePlanModal, 900);
   });

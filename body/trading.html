@@ -186,42 +186,7 @@
             </div>
           </section>
 
-          <section class="dash-card dash-session-card" id="trading-session-card" hidden>
-            <div class="dash-session-head">
-              <div class="dash-session-status">
-                <span class="dash-session-dot"></span>
-                Trading Session Active
-              </div>
-              <span class="dash-session-time" id="session-time">00:00</span>
-            </div>
-
-            <div class="dash-session-details">
-              <div class="dash-session-detail">
-                <span>Symbol</span>
-                <strong id="session-symbol">&mdash;</strong>
-              </div>
-              <div class="dash-session-detail">
-                <span>Side</span>
-                <strong id="session-side">&mdash;</strong>
-              </div>
-              <div class="dash-session-detail">
-                <span>Quantity</span>
-                <strong id="session-qty">&mdash;</strong>
-              </div>
-              <div class="dash-session-detail">
-                <span>Total</span>
-                <strong id="session-total">&mdash;</strong>
-              </div>
-            </div>
-
-            <button type="button" class="dash-btn-ghost" id="end-session-btn" style="width: 100%; justify-content: center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9 9h6v6H9z"></path>
-              </svg>
-              End Trading Session
-            </button>
-          </section>
+          <div id="trading-sessions-list"></div>
 
           <section class="dash-card">
             <h2 class="dash-form-title">Place an Order</h2>
@@ -303,6 +268,15 @@
           </footer>
         </main>
       </div>
+    </div>
+
+    <div class="dash-toast" id="order-toast" role="status" aria-live="polite">
+      <span class="dash-toast-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"></path>
+        </svg>
+      </span>
+      <span>Order placed successfully.</span>
     </div>
 
     <script src="script.js"></script>
