@@ -10,6 +10,30 @@ function unlockScroll() {
   if (scrollLockCount === 0) document.body.style.overflow = '';
 }
 
+const AVATAR_KEY = 'Muskverse-avatar-url';
+
+function applyAvatarEverywhere(dataUrl) {
+  document.querySelectorAll('.dash-avatar, .dash-user-avatar').forEach((el) => {
+    let img = el.querySelector('img.dash-avatar-img');
+    const svg = el.querySelector('svg');
+    if (dataUrl) {
+      if (!img) {
+        img = document.createElement('img');
+        img.className = 'dash-avatar-img';
+        img.alt = 'Profile picture';
+        el.appendChild(img);
+      }
+      img.src = dataUrl;
+      if (svg) svg.style.display = 'none';
+    } else {
+      img?.remove();
+      if (svg) svg.style.display = '';
+    }
+  });
+}
+
+applyAvatarEverywhere(localStorage.getItem(AVATAR_KEY));
+
 const menuToggle = document.querySelector('.dash-menu-toggle');
 const sidebar = document.querySelector('.dash-sidebar');
 const sidebarBackdrop = document.querySelector('.dash-sidebar-backdrop');
@@ -101,9 +125,10 @@ const symbolContainer = document.querySelector('#dash-symbol-widget');
 const marketOverviewContainer = document.querySelector('#market-overview-widget');
 const marketHotlistContainer = document.querySelector('#market-hotlist-widget');
 const marketCalendarContainer = document.querySelector('#market-calendar-widget');
+const marketEthContainer = document.querySelector('#market-eth-widget');
 const advancedChartContainer = document.querySelector('#trading-chart-widget');
 const hasTradingViewWidgets = Boolean(
-  tickerContainer || symbolContainer || marketOverviewContainer || marketHotlistContainer || marketCalendarContainer || advancedChartContainer
+  tickerContainer || symbolContainer || marketOverviewContainer || marketHotlistContainer || marketCalendarContainer || marketEthContainer || advancedChartContainer
 );
 
 const STRATEGY_ASSETS = {
@@ -278,6 +303,28 @@ function refreshTradingViewWidgets(theme) {
     countryFilter: 'us,eu,gb,jp,cn',
   });
 
+  loadTradingViewWidget(marketEthContainer, 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js', {
+    symbols: [['Ethereum', 'BITSTAMP:ETHUSD|1D']],
+    chartOnly: false,
+    width: '100%',
+    height: 300,
+    locale: 'en',
+    colorTheme: theme,
+    autosize: true,
+    showVolume: true,
+    showMA: false,
+    hideDateRanges: false,
+    hideMarketStatus: false,
+    hideSymbolLogo: false,
+    scalePosition: 'right',
+    scaleMode: 'Normal',
+    fontFamily: '-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif',
+    noTimeScale: false,
+    valuesTracking: '1',
+    changeMode: 'price-and-percent',
+    chartType: 'area',
+  });
+
   loadTradingViewWidget(advancedChartContainer, 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js', {
     autosize: true,
     symbol: activeChartSymbol,
@@ -350,6 +397,53 @@ if (moversTbody && moversButtons.length) {
       renderMovers(button.dataset.movers);
     });
   });
+}
+
+const snapshotBtcValue = document.querySelector('#snapshot-btc-value');
+
+if (snapshotBtcValue) {
+  const UP_ICON = '<path d="M3 17 9 11l4 4 8-8"></path><path d="M15 7h6v6"></path>';
+  const DOWN_ICON = '<path d="M3 7 9 13l4-4 8 8"></path><path d="M15 17h6v-6"></path>';
+
+  const applySnapshotCard = (valueEl, changeEl, iconEl, priceText, pct) => {
+    valueEl.textContent = priceText;
+    changeEl.textContent = `${pct >= 0 ? '+' : ''}${pct.toFixed(2)}%`;
+    changeEl.className = `dash-change ${pct >= 0 ? 'is-gain' : 'is-loss'}`;
+    iconEl.className = `dash-stat-icon ${pct >= 0 ? 'is-green' : 'is-red'}`;
+    iconEl.querySelector('svg').innerHTML = pct >= 0 ? UP_ICON : DOWN_ICON;
+  };
+
+  const btcValueEl = snapshotBtcValue;
+  const btcChangeEl = document.querySelector('#snapshot-btc-change');
+  const btcIconEl = document.querySelector('#snapshot-btc-icon');
+  const ethValueEl = document.querySelector('#snapshot-eth-value');
+  const ethChangeEl = document.querySelector('#snapshot-eth-change');
+  const ethIconEl = document.querySelector('#snapshot-eth-icon');
+
+  const fetchLivePrices = async () => {
+    try {
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true');
+      if (!response.ok) return;
+      const data = await response.json();
+
+      const btcPrice = data?.bitcoin?.usd;
+      const btcPct = data?.bitcoin?.usd_24h_change;
+      if (typeof btcPrice === 'number' && typeof btcPct === 'number') {
+        applySnapshotCard(btcValueEl, btcChangeEl, btcIconEl, `$${btcPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, btcPct);
+      }
+
+      const ethPrice = data?.ethereum?.usd;
+      const ethPct = data?.ethereum?.usd_24h_change;
+      if (ethValueEl && typeof ethPrice === 'number' && typeof ethPct === 'number') {
+        applySnapshotCard(ethValueEl, ethChangeEl, ethIconEl, `$${ethPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`, ethPct);
+      }
+    } catch (error) {
+      // Offline or the API is unreachable — keep showing the last known prices.
+    }
+  };
+
+  fetchLivePrices();
+  setInterval(fetchLivePrices, 30000);
 }
 
 const dashThemeToggle = document.querySelector('.dash-theme-toggle');
@@ -781,6 +875,76 @@ document.querySelectorAll('.dash-password-toggle').forEach((toggle) => {
     toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
   });
 });
+
+const avatarUploadInput = document.querySelector('#avatar-upload-input');
+const avatarUploadBtn = document.querySelector('#avatar-upload-btn');
+
+if (avatarUploadInput && avatarUploadBtn) {
+  const avatarRemoveBtn = document.querySelector('#avatar-remove-btn');
+  const avatarPreviewIcon = document.querySelector('#avatar-preview-icon');
+  const avatarPreviewImg = document.querySelector('#avatar-preview-img');
+  const avatarNote = document.querySelector('#avatar-note');
+  const defaultNote = avatarNote.textContent;
+  const MAX_AVATAR_DIMENSION = 240;
+
+  const renderAvatarPreview = (dataUrl) => {
+    if (dataUrl) {
+      avatarPreviewImg.src = dataUrl;
+      avatarPreviewImg.hidden = false;
+      avatarPreviewIcon.style.display = 'none';
+      avatarRemoveBtn.hidden = false;
+    } else {
+      avatarPreviewImg.hidden = true;
+      avatarPreviewImg.removeAttribute('src');
+      avatarPreviewIcon.style.display = '';
+      avatarRemoveBtn.hidden = true;
+    }
+  };
+
+  renderAvatarPreview(localStorage.getItem(AVATAR_KEY));
+
+  avatarUploadBtn.addEventListener('click', () => avatarUploadInput.click());
+
+  avatarUploadInput.addEventListener('change', () => {
+    const file = avatarUploadInput.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      avatarNote.textContent = 'Please choose an image file.';
+      avatarNote.style.color = 'var(--dash-red)';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const scale = Math.min(1, MAX_AVATAR_DIMENSION / Math.max(img.width, img.height));
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+
+        localStorage.setItem(AVATAR_KEY, dataUrl);
+        renderAvatarPreview(dataUrl);
+        applyAvatarEverywhere(dataUrl);
+        avatarNote.textContent = 'Profile picture updated.';
+        avatarNote.style.color = 'var(--dash-blue)';
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  avatarRemoveBtn.addEventListener('click', () => {
+    localStorage.removeItem(AVATAR_KEY);
+    avatarUploadInput.value = '';
+    renderAvatarPreview(null);
+    applyAvatarEverywhere(null);
+    avatarNote.textContent = defaultNote;
+    avatarNote.style.color = '';
+  });
+}
 
 const profileEditBtn = document.querySelector('#profile-edit-btn');
 

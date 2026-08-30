@@ -182,6 +182,39 @@
           <section class="dash-card">
             <div class="dash-form-head">
               <div>
+                <h2 class="dash-form-title">Profile Picture</h2>
+                <p class="dash-form-subtitle">Upload a photo to personalize your account.</p>
+              </div>
+            </div>
+            <div class="dash-avatar-settings">
+              <div class="dash-avatar-preview" id="avatar-preview">
+                <svg id="avatar-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="4"></circle>
+                  <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"></path>
+                </svg>
+                <img id="avatar-preview-img" alt="Profile picture" hidden />
+              </div>
+              <div class="dash-avatar-actions">
+                <input type="file" id="avatar-upload-input" accept="image/*" hidden />
+                <div class="dash-avatar-buttons">
+                  <button type="button" class="dash-btn" id="avatar-upload-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 16V4"></path>
+                      <path d="m6 10 6-6 6 6"></path>
+                      <path d="M4 20h16"></path>
+                    </svg>
+                    Upload Photo
+                  </button>
+                  <button type="button" class="dash-btn-ghost" id="avatar-remove-btn" style="color: var(--dash-red); border-color: var(--dash-red)" hidden>Remove Photo</button>
+                </div>
+                <p class="dash-form-note" id="avatar-note">JPG or PNG, square images look best.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="dash-card">
+            <div class="dash-form-head">
+              <div>
                 <h2 class="dash-form-title">Profile Information</h2>
                 <p class="dash-form-subtitle">Update your personal details.</p>
               </div>
@@ -284,16 +317,6 @@
               <div class="dash-toggle-text">
                 <strong>Email Notifications</strong>
                 <span>Account activity, KYC updates, and statements</span>
-              </div>
-              <label class="dash-switch">
-                <input type="checkbox" checked />
-                <span class="dash-switch-track"></span>
-              </label>
-            </div>
-            <div class="dash-toggle-row">
-              <div class="dash-toggle-text">
-                <strong>SMS Alerts</strong>
-                <span>Security codes and login alerts</span>
               </div>
               <label class="dash-switch">
                 <input type="checkbox" checked />
