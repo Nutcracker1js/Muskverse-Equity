@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your Muskverse Equity investor dashboard." />
+    <title>Muskverse Equity | Savings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body class="dash-page">
+    <div class="dash-shell">
+      <div class="dash-sidebar-backdrop"></div>
+      <aside class="dash-sidebar">
+        <button type="button" class="dash-sidebar-close" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6l12 12"></path>
+            <path d="M18 6 6 18"></path>
+          </svg>
+        </button>
+        <a class="dash-brand" href="dashboard.html">
+          <span class="dash-brand-mark">M</span>
+          Muskverse Equity
+        </a>
+
+        <div class="dash-profile">
+          <div class="dash-avatar-wrap">
+            <span class="dash-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"></path>
+              </svg>
+            </span>
+            <span class="dash-online-dot" aria-hidden="true"></span>
+          </div>
+          <p class="dash-profile-name">Pj Mask</p>
+          <p class="dash-profile-status">online</p>
+
+          <a href="deposits.html" class="dash-balance">
+            <span class="dash-balance-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path>
+                <path d="M16 12h3"></path>
+                <path d="M3 9h18"></path>
+              </svg>
+            </span>
+            <span>
+              <span class="dash-balance-label">Balance</span>
+              <span class="dash-balance-value">$10.00</span>
+            </span>
+          </a>
+        </div>
+
+        <nav class="dash-nav" aria-label="Dashboard">
+          <a href="dashboard.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>
+            </span>
+            <span class="dash-nav-label">Dashboard</span>
+          </a>
+          <a href="deposits.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path><path d="M3 9h18"></path><path d="M12 12.5v4"></path><path d="M10 14.5h4"></path></svg>
+            </span>
+            <span class="dash-nav-label">Deposits</span>
+          </a>
+          <a href="history.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+            </span>
+            <span class="dash-nav-label">History</span>
+          </a>
+          <a href="investment.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            </span>
+            <span class="dash-nav-label">Investment</span>
+          </a>
+          <a href="ipo.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 4.5 6 4.5 9.5S12 22 12 22s-4.5-3-4.5-10.5S9 4.5 12 2Z"></path><circle cx="12" cy="10" r="1.6"></circle><path d="M9 18l-3 3"></path><path d="M15 18l3 3"></path></svg>
+            </span>
+            <span class="dash-nav-label">IPO</span>
+          </a>
+          <a href="market.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"></path><path d="M15 7h6v6"></path></svg>
+            </span>
+            <span class="dash-nav-label">Market</span>
+          </a>
+          <a href="savings.html" class="dash-nav-item is-active" aria-current="page">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c0-3.5 3-6 7-6 2.8 0 4.4 1 5.5 2H19l1 2-2 1v2l-2 1-1 2H9l-1-2c-2.5-.7-4-2.6-4-5Z"></path><circle cx="15" cy="9" r=".6" fill="currentColor" stroke="none"></circle><path d="M8 18v2M13 18v2"></path></svg>
+            </span>
+            <span class="dash-nav-label">Savings</span>
+          </a>
+          <a href="trading.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V3"></path><path d="M6 17V9"></path><path d="M10 17V6"></path><path d="M14 17v-4"></path><path d="M18 17V4"></path><path d="M21 21H3"></path></svg>
+            </span>
+            <span class="dash-nav-label">Trading</span>
+          </a>
+        </nav>
+
+        <a href="../login.html" class="dash-logout">
+          <span class="dash-logout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="m16 17 5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+          </span>
+          Log Out
+        </a>
+      </aside>
+
+      <div class="dash-main">
+        <header class="dash-topbar">
+          <button type="button" class="dash-menu-toggle" id="dash-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18"></path>
+              <path d="M3 12h18"></path>
+              <path d="M3 18h18"></path>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 6l12 12"></path>
+              <path d="M18 6 6 18"></path>
+            </svg>
+          </button>
+          <button
+            class="dash-theme-toggle"
+            type="button"
+            aria-label="Switch to light mode"
+            aria-pressed="true"
+          >
+            <svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path></svg
+            ><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path
+                d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+              ></path>
+            </svg>
+          </button>
+          <a href="settings.html" class="dash-user-chip">
+            <span class="dash-user-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"></path>
+              </svg>
+            </span>
+            <span class="dash-user-name">Pjmask555</span>
+          </a>
+        </header>
+
+        <main class="dash-content">
+          <p class="dash-breadcrumb">
+            <a href="dashboard.html">Dashboard</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg>
+            <span>Savings</span>
+          </p>
+
+          <h1 class="dash-heading">
+            <span class="dash-heading-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c0-3.5 3-6 7-6 2.8 0 4.4 1 5.5 2H19l1 2-2 1v2l-2 1-1 2H9l-1-2c-2.5-.7-4-2.6-4-5Z"></path><circle cx="15" cy="9" r=".6" fill="currentColor" stroke="none"></circle><path d="M8 18v2M13 18v2"></path></svg>
+            </span>
+            Savings
+          </h1>
+
+          <div class="dash-stats-grid">
+            <div class="dash-stat-card">
+              <div>
+                <p class="dash-stat-value">$10.00</p>
+                <p class="dash-stat-label">Balance</p>
+              </div>
+              <span class="dash-stat-icon is-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c0-3.5 3-6 7-6 2.8 0 4.4 1 5.5 2H19l1 2-2 1v2l-2 1-1 2H9l-1-2c-2.5-.7-4-2.6-4-5Z"></path><circle cx="15" cy="9" r=".6" fill="currentColor" stroke="none"></circle><path d="M8 18v2M13 18v2"></path></svg>
+              </span>
+            </div>
+            <div class="dash-stat-card">
+              <div>
+                <p class="dash-stat-value">$0.00</p>
+                <p class="dash-stat-label">Interest Earned (YTD)</p>
+              </div>
+              <span class="dash-stat-icon is-green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"></path><path d="M15 7h6v6"></path></svg>
+              </span>
+            </div>
+          </div>
+
+          <section class="dash-card">
+            <div class="dash-section-head">
+              <div>
+                <h2 class="dash-form-title">Savings Plans</h2>
+                <p class="dash-form-subtitle">Choose a plan based on how long you can leave funds untouched.</p>
+              </div>
+            </div>
+
+            <div class="dash-opp-grid">
+              <div class="dash-opp-card" data-plan="Flex Save" data-apy="4.5" data-min="0" data-lock="Withdraw anytime, no lock-up required">
+                <div class="dash-opp-head">
+                  <div>
+                    <p class="dash-opp-title">Flex Save</p>
+                    <p class="dash-opp-category">Withdraw anytime, no lock-up</p>
+                  </div>
+                  <span class="dash-badge is-open">4.5% APY</span>
+                </div>
+                <div class="dash-opp-stats">
+                  <div class="dash-opp-stat"><strong>$0</strong><span>Min. Deposit</span></div>
+                  <div class="dash-opp-stat"><strong>Daily</strong><span>Interest Paid</span></div>
+                </div>
+                <button type="button" class="dash-btn dash-plan-open">Open Plan</button>
+              </div>
+
+              <div class="dash-opp-card" data-plan="6-Month Lock" data-apy="5.2" data-min="500" data-lock="Funds locked for 6 months">
+                <div class="dash-opp-head">
+                  <div>
+                    <p class="dash-opp-title">6-Month Lock</p>
+                    <p class="dash-opp-category">Funds locked for 6 months</p>
+                  </div>
+                  <span class="dash-badge is-open">5.2% APY</span>
+                </div>
+                <div class="dash-opp-stats">
+                  <div class="dash-opp-stat"><strong>$500</strong><span>Min. Deposit</span></div>
+                  <div class="dash-opp-stat"><strong>Monthly</strong><span>Interest Paid</span></div>
+                </div>
+                <button type="button" class="dash-btn dash-plan-open">Open Plan</button>
+              </div>
+
+              <div class="dash-opp-card" data-plan="12-Month Lock" data-apy="6.0" data-min="1000" data-lock="Funds locked for 12 months">
+                <div class="dash-opp-head">
+                  <div>
+                    <p class="dash-opp-title">12-Month Lock</p>
+                    <p class="dash-opp-category">Funds locked for 12 months</p>
+                  </div>
+                  <span class="dash-badge is-open">6.0% APY</span>
+                </div>
+                <div class="dash-opp-stats">
+                  <div class="dash-opp-stat"><strong>$1,000</strong><span>Min. Deposit</span></div>
+                  <div class="dash-opp-stat"><strong>Monthly</strong><span>Interest Paid</span></div>
+                </div>
+                <button type="button" class="dash-btn dash-plan-open">Open Plan</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="dash-card">
+            <div class="dash-section-head">
+              <div>
+                <h2 class="dash-form-title">Active Savings Plans</h2>
+                <p class="dash-form-subtitle">Plans you've opened and their unlock status.</p>
+              </div>
+            </div>
+            <div id="savings-plans-empty" class="dash-empty-state">
+              <p>You haven't opened any savings plans yet. Choose a plan above to get started.</p>
+            </div>
+            <div class="dash-table-wrap" id="savings-plans-wrap" hidden>
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Plan</th>
+                    <th class="is-numeric">Amount</th>
+                    <th class="is-numeric">Opened</th>
+                    <th class="is-numeric">Unlock Date</th>
+                    <th class="is-numeric">Projected Return</th>
+                    <th class="is-numeric">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="savings-plans-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="dash-card">
+            <div class="dash-section-head">
+              <div>
+                <h2 class="dash-form-title">Savings Calculator</h2>
+                <p class="dash-form-subtitle">See how much you could earn on a given plan.</p>
+              </div>
+            </div>
+            <div class="dash-field-row">
+              <div class="dash-field">
+                <label for="calc-amount">Deposit Amount ($)</label>
+                <input type="number" id="calc-amount" min="0" step="10" value="1000" />
+              </div>
+              <div class="dash-field">
+                <label for="calc-plan">Plan</label>
+                <select id="calc-plan">
+                  <option value="4.5">Flex Save &middot; 4.5% APY</option>
+                  <option value="5.2">6-Month Lock &middot; 5.2% APY</option>
+                  <option value="6.0">12-Month Lock &middot; 6.0% APY</option>
+                </select>
+              </div>
+            </div>
+            <div class="dash-available-balance">
+              <span>Projected Earnings (1 Year)</span>
+              <span id="calc-result">$45.00</span>
+            </div>
+          </section>
+
+          <section class="dash-card dash-support-card">
+            <span class="dash-support-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <path d="m4 7 8 6 8-6"></path>
+              </svg>
+            </span>
+            <div class="dash-support-text">
+              <h3>We're here to help you!</h3>
+              <p>Ask a question, manage request, report an issue. Our support team will get back to you by email.</p>
+            </div>
+            <button type="button" class="dash-btn dash-support-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4A8.6 8.6 0 0 1 8 18.8L3 20l1.3-4.7a8.3 8.3 0 0 1-1.3-4.5A8.4 8.4 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5Z"></path>
+              </svg>
+              Get Support Now
+            </button>
+          </section>
+
+          <footer class="dash-footer">
+            All Rights Reserved &copy; Muskverse Equity 2026
+          </footer>
+        </main>
+      </div>
+    </div>
+
+    <div class="dash-modal-overlay" id="plan-modal-overlay">
+      <div class="dash-modal" role="dialog" aria-modal="true" aria-labelledby="plan-modal-heading">
+        <button type="button" class="dash-modal-close" id="plan-modal-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6l12 12"></path>
+            <path d="M18 6 6 18"></path>
+          </svg>
+        </button>
+
+        <h2 id="plan-modal-heading">Open <span id="plan-modal-name">Flex Save</span></h2>
+        <p class="dash-modal-lead" id="plan-modal-lock">Withdraw anytime, no lock-up required.</p>
+
+        <form id="plan-form">
+          <div class="dash-field">
+            <label for="plan-amount">Deposit Amount ($)</label>
+            <div class="dash-amount-wrap">
+              <span>$</span>
+              <input type="number" id="plan-amount" min="0" step="10" placeholder="0.00" required />
+            </div>
+          </div>
+
+          <div class="dash-quick-amounts">
+            <button type="button" class="dash-quick-amount dash-plan-amount-preset" data-amount="100">$100</button>
+            <button type="button" class="dash-quick-amount dash-plan-amount-preset" data-amount="500">$500</button>
+            <button type="button" class="dash-quick-amount dash-plan-amount-preset" data-amount="1000">$1,000</button>
+            <button type="button" class="dash-quick-amount dash-plan-amount-preset" data-amount="5000">$5,000</button>
+          </div>
+
+          <div class="dash-field">
+            <label>Lock-up Duration</label>
+            <div class="dash-quick-amounts">
+              <button type="button" class="dash-quick-amount dash-plan-duration" data-months="3">3 Months</button>
+              <button type="button" class="dash-quick-amount dash-plan-duration" data-months="6">6 Months</button>
+              <button type="button" class="dash-quick-amount dash-plan-duration" data-months="9">9 Months</button>
+              <button type="button" class="dash-quick-amount dash-plan-duration" data-months="12">12 Months</button>
+              <button type="button" class="dash-quick-amount" id="plan-duration-custom-toggle">Pick a Date</button>
+            </div>
+            <input type="date" id="plan-custom-date" class="dash-plan-date-input" hidden />
+          </div>
+
+          <div class="dash-available-balance">
+            <span>Unlock Date</span>
+            <span id="plan-unlock-preview">&mdash;</span>
+          </div>
+          <div class="dash-available-balance">
+            <span>Projected Interest</span>
+            <span id="plan-interest-preview">$0.00</span>
+          </div>
+
+          <button type="submit" class="dash-btn" style="width: 100%; justify-content: center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14"></path>
+              <path d="m19 12-7 7-7-7"></path>
+            </svg>
+            Confirm &amp; Open Plan
+          </button>
+          <p class="dash-form-note" id="plan-modal-note"></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

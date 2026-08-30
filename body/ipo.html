@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your Muskverse Equity investor dashboard." />
+    <title>Muskverse Equity | IPO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body class="dash-page">
+    <div class="dash-shell">
+      <div class="dash-sidebar-backdrop"></div>
+      <aside class="dash-sidebar">
+        <button type="button" class="dash-sidebar-close" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6l12 12"></path>
+            <path d="M18 6 6 18"></path>
+          </svg>
+        </button>
+        <a class="dash-brand" href="dashboard.html">
+          <span class="dash-brand-mark">M</span>
+          Muskverse Equity
+        </a>
+
+        <div class="dash-profile">
+          <div class="dash-avatar-wrap">
+            <span class="dash-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"></path>
+              </svg>
+            </span>
+            <span class="dash-online-dot" aria-hidden="true"></span>
+          </div>
+          <p class="dash-profile-name">Pj Mask</p>
+          <p class="dash-profile-status">online</p>
+
+          <a href="deposits.html" class="dash-balance">
+            <span class="dash-balance-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path>
+                <path d="M16 12h3"></path>
+                <path d="M3 9h18"></path>
+              </svg>
+            </span>
+            <span>
+              <span class="dash-balance-label">Balance</span>
+              <span class="dash-balance-value">$10.00</span>
+            </span>
+          </a>
+        </div>
+
+        <nav class="dash-nav" aria-label="Dashboard">
+          <a href="dashboard.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>
+            </span>
+            <span class="dash-nav-label">Dashboard</span>
+          </a>
+          <a href="deposits.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path><path d="M3 9h18"></path><path d="M12 12.5v4"></path><path d="M10 14.5h4"></path></svg>
+            </span>
+            <span class="dash-nav-label">Deposits</span>
+          </a>
+          <a href="history.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+            </span>
+            <span class="dash-nav-label">History</span>
+          </a>
+          <a href="investment.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            </span>
+            <span class="dash-nav-label">Investment</span>
+          </a>
+          <a href="ipo.html" class="dash-nav-item is-active" aria-current="page">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 4.5 6 4.5 9.5S12 22 12 22s-4.5-3-4.5-10.5S9 4.5 12 2Z"></path><circle cx="12" cy="10" r="1.6"></circle><path d="M9 18l-3 3"></path><path d="M15 18l3 3"></path></svg>
+            </span>
+            <span class="dash-nav-label">IPO</span>
+          </a>
+          <a href="market.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"></path><path d="M15 7h6v6"></path></svg>
+            </span>
+            <span class="dash-nav-label">Market</span>
+          </a>
+          <a href="savings.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c0-3.5 3-6 7-6 2.8 0 4.4 1 5.5 2H19l1 2-2 1v2l-2 1-1 2H9l-1-2c-2.5-.7-4-2.6-4-5Z"></path><circle cx="15" cy="9" r=".6" fill="currentColor" stroke="none"></circle><path d="M8 18v2M13 18v2"></path></svg>
+            </span>
+            <span class="dash-nav-label">Savings</span>
+          </a>
+          <a href="trading.html" class="dash-nav-item">
+            <span class="dash-nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V3"></path><path d="M6 17V9"></path><path d="M10 17V6"></path><path d="M14 17v-4"></path><path d="M18 17V4"></path><path d="M21 21H3"></path></svg>
+            </span>
+            <span class="dash-nav-label">Trading</span>
+          </a>
+        </nav>
+
+        <a href="../login.html" class="dash-logout">
+          <span class="dash-logout-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="m16 17 5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+          </span>
+          Log Out
+        </a>
+      </aside>
+
+      <div class="dash-main">
+        <header class="dash-topbar">
+          <button type="button" class="dash-menu-toggle" id="dash-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18"></path>
+              <path d="M3 12h18"></path>
+              <path d="M3 18h18"></path>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 6l12 12"></path>
+              <path d="M18 6 6 18"></path>
+            </svg>
+          </button>
+          <button
+            class="dash-theme-toggle"
+            type="button"
+            aria-label="Switch to light mode"
+            aria-pressed="true"
+          >
+            <svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path></svg
+            ><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path
+                d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+              ></path>
+            </svg>
+          </button>
+          <a href="settings.html" class="dash-user-chip">
+            <span class="dash-user-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"></path>
+              </svg>
+            </span>
+            <span class="dash-user-name">Pjmask555</span>
+          </a>
+        </header>
+
+        <main class="dash-content">
+          <p class="dash-breadcrumb">
+            <a href="dashboard.html">Dashboard</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg>
+            <span>IPO</span>
+          </p>
+
+          <h1 class="dash-heading">
+            <span class="dash-heading-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 4.5 6 4.5 9.5S12 22 12 22s-4.5-3-4.5-10.5S9 4.5 12 2Z"></path><circle cx="12" cy="10" r="1.6"></circle><path d="M9 18l-3 3"></path><path d="M15 18l3 3"></path></svg>
+            </span>
+            IPO
+          </h1>
+
+          <section class="dash-card">
+            <div class="dash-section-head">
+              <div>
+                <h2 class="dash-form-title">Upcoming &amp; Open Offerings</h2>
+                <p class="dash-form-subtitle">Reserve an allocation before shares list on the open market.</p>
+              </div>
+            </div>
+
+            <div class="dash-opp-grid">
+              <div class="dash-opp-card">
+                <div class="dash-opp-head">
+                  <div>
+                    <p class="dash-opp-title">NovaGrid Energy</p>
+                    <p class="dash-opp-category">NASDAQ: NGE &middot; Renewable Infrastructure</p>
+                  </div>
+                  <span class="dash-badge is-open">Open</span>
+                </div>
+                <div class="dash-opp-stats">
+                  <div class="dash-opp-stat"><strong>$18&ndash;$21</strong><span>Price Range</span></div>
+                  <div class="dash-opp-stat"><strong>Sep 14, 2026</strong><span>Offer Date</span></div>
+                  <div class="dash-opp-stat"><strong>$500</strong><span>Min. Order</span></div>
+                </div>
+                <button type="button" class="dash-btn dash-ipo-reserve">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+                  Reserve Shares
+                </button>
+              </div>
+
+              <div class="dash-opp-card">
+                <div class="dash-opp-head">
+                  <div>
+                    <p class="dash-opp-title">Solace Biotech</p>
+                    <p class="dash-opp-category">NASDAQ: SLBT &middot; Biotechnology</p>
+                  </div>
+                  <span class="dash-badge is-open">Open</span>
+                </div>
+                <div class="dash-opp-stats">
+                  <div class="dash-opp-stat"><strong>$9&ndash;$11</strong><span>Price Range</span></div>
+                  <div class="dash-opp-stat"><strong>Sep 22, 2026</strong><span>Offer Date</span></div>
+                  <div class="dash-opp-stat"><strong>$250</strong><span>Min. Order</span></div>
+                </div>
+                <button type="button" class="dash-btn dash-ipo-reserve">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+                  Reserve Shares
+                </button>
+              </div>
+
+              <div class="dash-opp-card">
+                <div class="dash-opp-head">
+                  <div>
+                    <p class="dash-opp-title">Quantum Robotics Corp</p>
+                    <p class="dash-opp-category">NYSE: QRBT &middot; Industrial Automation</p>
+                  </div>
+                  <span class="dash-badge is-upcoming">Upcoming</span>
+                </div>
+                <div class="dash-opp-stats">
+                  <div class="dash-opp-stat"><strong>$32&ndash;$36</strong><span>Price Range</span></div>
+                  <div class="dash-opp-stat"><strong>Oct 6, 2026</strong><span>Offer Date</span></div>
+                  <div class="dash-opp-stat"><strong>$1,000</strong><span>Min. Order</span></div>
+                </div>
+                <button type="button" class="dash-btn-ghost dash-ipo-reserve">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+                  Notify Me
+                </button>
+              </div>
+
+              <div class="dash-opp-card">
+                <div class="dash-opp-head">
+                  <div>
+                    <p class="dash-opp-title">Aether Cloud Systems</p>
+                    <p class="dash-opp-category">NASDAQ: AETH &middot; Enterprise Software</p>
+                  </div>
+                  <span class="dash-badge is-closed">Closed</span>
+                </div>
+                <div class="dash-opp-stats">
+                  <div class="dash-opp-stat"><strong>$24.50</strong><span>Final Price</span></div>
+                  <div class="dash-opp-stat"><strong>Aug 18, 2026</strong><span>Listed</span></div>
+                  <div class="dash-opp-stat"><strong>+31.2%</strong><span>Since Listing</span></div>
+                </div>
+                <button type="button" class="dash-btn-ghost" disabled style="opacity: 0.5; cursor: not-allowed;">
+                  Offering Closed
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="dash-card dash-support-card">
+            <span class="dash-support-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <path d="m4 7 8 6 8-6"></path>
+              </svg>
+            </span>
+            <div class="dash-support-text">
+              <h3>We're here to help you!</h3>
+              <p>Ask a question, manage request, report an issue. Our support team will get back to you by email.</p>
+            </div>
+            <button type="button" class="dash-btn dash-support-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4A8.6 8.6 0 0 1 8 18.8L3 20l1.3-4.7a8.3 8.3 0 0 1-1.3-4.5A8.4 8.4 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5Z"></path>
+              </svg>
+              Get Support Now
+            </button>
+          </section>
+
+          <footer class="dash-footer">
+            All Rights Reserved &copy; Muskverse Equity 2026
+          </footer>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

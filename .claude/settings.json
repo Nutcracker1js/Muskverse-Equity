@@ -12,7 +12,14 @@
       "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs \"file:///Users/mac/Desktop/Muskverse-Equity/index.html\" --script /private/tmp/claude-501/-Users-mac-Desktop-Muskverse-Equity/58b6380c-2dcf-44bc-aec9-deac83a79fda/scratchpad/nav_check.mjs)",
       "Bash(git add *)",
       "Bash(sips -g pixelWidth -g pixelHeight assets/images/signup.jpg)",
-      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs file:///Users/mac/Desktop/Muskverse-Equity/register.html?v=__CMDSUB_OUTPUT__ --eval ' *)"
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs file:///Users/mac/Desktop/Muskverse-Equity/register.html?v=__CMDSUB_OUTPUT__ --eval ' *)",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs http://localhost:8934/index.html --eval ' *)",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs file:///private/tmp/claude-501/-Users-mac-Desktop-Muskverse-Equity/58b6380c-2dcf-44bc-aec9-deac83a79fda/scratchpad/spec_test.html --eval ' *)",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs http://localhost:8934/spec_test2.html --eval ' *)",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs \"http://localhost:8934/index.html\" --script /private/tmp/claude-501/-Users-mac-Desktop-Muskverse-Equity/58b6380c-2dcf-44bc-aec9-deac83a79fda/scratchpad/security_btn_check.mjs)",
+      "Bash(node /Users/mac/.codegpt/skills/browser-automation/browser.mjs \"http://localhost:8934/index.html\" --script /private/tmp/claude-501/-Users-mac-Desktop-Muskverse-Equity/58b6380c-2dcf-44bc-aec9-deac83a79fda/scratchpad/contrast_scan.mjs)",
+      "Bash(awk 'NR>=5692 && NR<=5790 {print NR\": \"$0}' assets/main.css)",
+      "Bash(grep -E '^\\\\S+: \\\\}|@media|^\\\\S+:\\\\s*\\\\}$')"
     ]
   }
 }

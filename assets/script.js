@@ -2,27 +2,6 @@ const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('#main-nav');
 const themeToggle = document.querySelector('.theme-toggle');
 
-if (document.querySelector('.article-detail-hero') && !document.querySelector('link[href*="style-article-detail-fix.css"]')) {
-  const articleDetailStyles = document.createElement('link');
-  articleDetailStyles.rel = 'stylesheet';
-  articleDetailStyles.href = '../style-article-detail-fix.css';
-  document.head.appendChild(articleDetailStyles);
-}
-
-if (document.querySelector('.article-detail-hero') && !document.querySelector('link[href*="style-article-detail.css"]')) {
-  const articleDetailLayoutStyles = document.createElement('link');
-  articleDetailLayoutStyles.rel = 'stylesheet';
-  articleDetailLayoutStyles.href = '../style-article-detail.css';
-  document.head.appendChild(articleDetailLayoutStyles);
-}
-
-if (document.querySelector('.article-detail-hero') && !document.querySelector('link[href*="style-article-detail-final.css"]')) {
-  const articleDetailFinalStyles = document.createElement('link');
-  articleDetailFinalStyles.rel = 'stylesheet';
-  articleDetailFinalStyles.href = '../style-article-detail-final.css';
-  document.head.appendChild(articleDetailFinalStyles);
-}
-
 const setTheme = (isDark) => {
   document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
   themeToggle?.setAttribute('aria-pressed', String(isDark));
