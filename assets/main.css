@@ -5766,7 +5766,7 @@ html[data-theme="dark"] .allocation-content p {
   html[data-theme="dark"] .index-page main > section:not(.hero) strong,
   html[data-theme="dark"] .index-page main > section:not(.hero) small,
   html[data-theme="dark"] .index-page main > section:not(.hero) .eyebrow,
-  html[data-theme="dark"] .index-page main > section:not(.hero) a:not(.button):not(.text-link):not(.faq-all-link) {
+  html[data-theme="dark"] .index-page main > section:not(.hero) a:not(.button):not(.text-link):not(.faq-all-link):not(.final-cta-button) {
     color: #ffffff !important;
   }
 

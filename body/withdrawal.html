@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Your Muskverse Equity investor dashboard." />
-    <title>Muskverse Equity | Market</title>
+    <title>Muskverse Equity | Withdrawal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -69,7 +69,7 @@
             </span>
             <span class="dash-nav-label">Deposits</span>
           </a>
-          <a href="withdrawal.html" class="dash-nav-item">
+          <a href="withdrawal.html" class="dash-nav-item is-active" aria-current="page">
             <span class="dash-nav-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path><path d="M3 9h18"></path><path d="M10 14.5h4"></path></svg>
             </span>
@@ -93,7 +93,7 @@
             </span>
             <span class="dash-nav-label">IPO</span>
           </a>
-          <a href="market.html" class="dash-nav-item is-active" aria-current="page">
+          <a href="market.html" class="dash-nav-item">
             <span class="dash-nav-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"></path><path d="M15 7h6v6"></path></svg>
             </span>
@@ -175,94 +175,62 @@
           <p class="dash-breadcrumb">
             <a href="dashboard.html">Dashboard</a>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg>
-            <span>Market</span>
+            <span>Withdrawal</span>
           </p>
 
           <h1 class="dash-heading">
             <span class="dash-heading-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"></path><path d="M15 7h6v6"></path></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path><path d="M3 9h18"></path><path d="M10 14.5h4"></path></svg>
             </span>
-            Market
+            Withdrawal
           </h1>
 
-          <div class="dash-live-indicator">
-            <span class="dash-session-dot"></span>
-            Live prices
-          </div>
-
-          <div class="dash-stats-grid">
-            <div class="dash-stat-card">
-              <div>
-                <p class="dash-stat-value" id="snapshot-btc-value">$77,686.00</p>
-                <p class="dash-stat-label">Bitcoin &middot; <span class="dash-change is-loss" id="snapshot-btc-change">-1.28%</span></p>
-              </div>
-              <span class="dash-stat-icon is-red" id="snapshot-btc-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7 9 13l4-4 8 8"></path><path d="M15 17h6v-6"></path></svg>
-              </span>
-            </div>
-            <div class="dash-stat-card">
-              <div>
-                <p class="dash-stat-value" id="snapshot-eth-value">$2,436.10</p>
-                <p class="dash-stat-label">Ethereum &middot; <span class="dash-change is-gain" id="snapshot-eth-change">+0.35%</span></p>
-              </div>
-              <span class="dash-stat-icon is-green" id="snapshot-eth-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"></path><path d="M15 7h6v6"></path></svg>
-              </span>
-            </div>
-          </div>
-
           <section class="dash-card">
-            <div class="dash-section-head">
-              <div>
-                <h2 class="dash-form-title">Top Movers</h2>
-                <p class="dash-form-subtitle">Today's biggest gainers and losers across major exchanges.</p>
+            <h2 class="dash-form-title">Withdraw Funds</h2>
+            <p class="dash-form-subtitle">Send your available balance to an external wallet address.</p>
+
+            <div class="dash-available-balance">
+              <span>Balance</span>
+              <span id="withdraw-balance">$10.00</span>
+            </div>
+
+            <form id="withdrawal-form">
+              <div class="dash-crypto-tabs" role="tablist" id="withdraw-coin-tabs">
+                <button type="button" class="dash-crypto-tab is-active" data-coin="btc">BTC</button>
+                <button type="button" class="dash-crypto-tab" data-coin="usdt">USDT</button>
+                <button type="button" class="dash-crypto-tab" data-coin="eth">ETH</button>
               </div>
-            </div>
-            <div class="dash-history-filters" role="tablist">
-              <button type="button" class="dash-history-filter is-active" data-movers="gainers">Gainers</button>
-              <button type="button" class="dash-history-filter" data-movers="losers">Losers</button>
-            </div>
-            <div class="dash-table-wrap">
-              <table class="dash-table">
-                <thead>
-                  <tr>
-                    <th>Symbol</th>
-                    <th>Name</th>
-                    <th class="is-numeric">Price</th>
-                    <th class="is-numeric">Change</th>
-                  </tr>
-                </thead>
-                <tbody id="movers-tbody"></tbody>
-              </table>
-            </div>
-          </section>
 
-          <section class="dash-card dash-widget-card">
-            <h2 class="dash-widget-title">Ethereum (ETH/USD)</h2>
-            <div class="tradingview-widget-container" id="market-eth-widget">
-              <div class="tradingview-widget-container__widget"></div>
-            </div>
-          </section>
+              <div class="dash-field">
+                <label for="withdraw-amount">Amount (USD)</label>
+                <input type="number" id="withdraw-amount" min="0.01" step="0.01" placeholder="0.00" />
+              </div>
 
-          <section class="dash-card dash-widget-card">
-            <h2 class="dash-widget-title">Market Overview</h2>
-            <div class="tradingview-widget-container" id="market-overview-widget">
-              <div class="tradingview-widget-container__widget"></div>
-            </div>
-          </section>
+              <div class="dash-quick-amounts">
+                <button type="button" class="dash-quick-amount dash-withdraw-amount-preset" data-pct="0.25">25% of balance</button>
+                <button type="button" class="dash-quick-amount dash-withdraw-amount-preset" data-pct="0.5">50%</button>
+                <button type="button" class="dash-quick-amount dash-withdraw-amount-preset" data-pct="0.75">75%</button>
+                <button type="button" class="dash-quick-amount dash-withdraw-amount-preset" data-pct="1">Max</button>
+              </div>
 
-          <section class="dash-card dash-widget-card">
-            <h2 class="dash-widget-title">Hot List</h2>
-            <div class="tradingview-widget-container" id="market-hotlist-widget">
-              <div class="tradingview-widget-container__widget"></div>
-            </div>
-          </section>
+              <div class="dash-field">
+                <label for="withdraw-address">Destination Wallet Address</label>
+                <input type="text" id="withdraw-address" placeholder="Enter your wallet address" autocomplete="off" />
+              </div>
 
-          <section class="dash-card dash-widget-card">
-            <h2 class="dash-widget-title">Economic Calendar</h2>
-            <div class="tradingview-widget-container" id="market-calendar-widget">
-              <div class="tradingview-widget-container__widget"></div>
-            </div>
+              <p class="dash-crypto-warning">
+                Double-check the address and network (<strong id="withdraw-network">Bitcoin Network</strong>) before submitting. Withdrawals sent to the wrong address or network cannot be recovered.
+              </p>
+
+              <button type="submit" class="dash-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19V5"></path>
+                  <path d="m5 12 7-7 7 7"></path>
+                </svg>
+                Request Withdrawal
+              </button>
+              <p class="dash-form-note" id="withdraw-note"></p>
+            </form>
           </section>
 
           <section class="dash-card dash-support-card">

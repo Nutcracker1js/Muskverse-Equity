@@ -1037,6 +1037,76 @@ if (cryptoFields) {
   });
 }
 
+const withdrawForm = document.querySelector('#withdrawal-form');
+
+if (withdrawForm) {
+  const withdrawBalanceEl = document.querySelector('#withdraw-balance');
+  const withdrawAmountInput = document.querySelector('#withdraw-amount');
+  const withdrawAddressInput = document.querySelector('#withdraw-address');
+  const withdrawNote = document.querySelector('#withdraw-note');
+  const withdrawNetworkEl = document.querySelector('#withdraw-network');
+  const withdrawCoinTabs = document.querySelectorAll('#withdraw-coin-tabs .dash-crypto-tab');
+  const withdrawPresets = document.querySelectorAll('.dash-withdraw-amount-preset');
+
+  const withdrawNetworks = {
+    btc: 'Bitcoin Network',
+    usdt: 'Ethereum Network (ERC-20)',
+    eth: 'Ethereum Network (ERC-20)',
+  };
+
+  const formatUSDValue = (value) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  const getWithdrawBalance = () => parseFloat((withdrawBalanceEl?.textContent || '0').replace(/[^0-9.-]/g, '')) || 0;
+
+  withdrawCoinTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      withdrawCoinTabs.forEach((t) => t.classList.toggle('is-active', t === tab));
+      if (withdrawNetworkEl) withdrawNetworkEl.textContent = withdrawNetworks[tab.dataset.coin] || withdrawNetworks.btc;
+    });
+  });
+
+  withdrawPresets.forEach((button) => {
+    button.addEventListener('click', () => {
+      const pct = parseFloat(button.dataset.pct);
+      const amount = getWithdrawBalance() * pct;
+      withdrawAmountInput.value = amount > 0 ? amount.toFixed(2) : '';
+    });
+  });
+
+  withdrawForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const amount = parseFloat(withdrawAmountInput.value || '0');
+    const balance = getWithdrawBalance();
+
+    if (!amount || amount <= 0) {
+      withdrawNote.textContent = 'Enter an amount to continue.';
+      withdrawNote.style.color = 'var(--dash-red)';
+      return;
+    }
+    if (amount > balance) {
+      withdrawNote.textContent = 'Withdrawal amount exceeds your available balance.';
+      withdrawNote.style.color = 'var(--dash-red)';
+      return;
+    }
+    if (!withdrawAddressInput.value.trim()) {
+      withdrawNote.textContent = 'Enter a destination wallet address.';
+      withdrawNote.style.color = 'var(--dash-red)';
+      return;
+    }
+
+    const newBalance = formatUSDValue(balance - amount);
+    if (withdrawBalanceEl) withdrawBalanceEl.textContent = newBalance;
+    document.querySelectorAll('.dash-balance-value').forEach((el) => {
+      el.textContent = newBalance;
+    });
+
+    withdrawNote.textContent = `Your withdrawal request for ${formatUSDValue(amount)} has been submitted and is pending review.`;
+    withdrawNote.style.color = '';
+    withdrawForm.reset();
+    withdrawCoinTabs.forEach((t) => t.classList.toggle('is-active', t.dataset.coin === 'btc'));
+    if (withdrawNetworkEl) withdrawNetworkEl.textContent = withdrawNetworks.btc;
+  });
+}
+
 const orderSymbol = document.querySelector('#order-symbol');
 const orderQuantity = document.querySelector('#order-quantity');
 const orderEstimate = document.querySelector('#order-estimate');
